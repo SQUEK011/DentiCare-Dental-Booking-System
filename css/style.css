@@ -130,6 +130,10 @@ a {
   display: none;
 }
 
+.header-top .contact-list {
+    margin-left: 650px;
+}
+
 .header-bottom {
   /*position: absolute;*/
   top: 0;
@@ -252,13 +256,18 @@ a {
 
 .box-message form{
     background-color: var(--jet);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding: 5px;
 }
 
-.box-message input {
+.box-message input,
+.box-message textarea {
     display: block;
     margin: 5px;
+    padding: 10px;
+}
+
+.footer-bottom {
     padding: 10px;
 }
 
