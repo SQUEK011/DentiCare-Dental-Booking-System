@@ -8,12 +8,12 @@
   <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
 
   <!--favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
   <!--CSS-->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -24,13 +24,13 @@
         <ul class="contact-list">
           <li class="contact-item">
             <div class="icon-mail">
-              <img src="assets/img/icons/envelope-solid.svg" width="14px" height="14px">
+              <img src="../assets/img/icons/envelope-solid.svg" width="14px" height="14px">
             </div>
             <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
           </li>
           <li class="contact-item">
             <div class="icon-phone">
-              <img src="assets/img/icons/phone-solid.svg" width="14px" height="14px">
+              <img src="../assets/img/icons/phone-solid.svg" width="14px" height="14px">
             </div>
             <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
           </li>
@@ -44,7 +44,7 @@
           <ul class="navbar-list">
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Home</a>
+              <a href="../index.html" class="navbar-link" data-nav-link>Home</a>
             </li>
 
             <li>
@@ -57,17 +57,17 @@
 
             <li>
               <button class="navbar-link" onclick="openForm()" data-nav-link>
-                <img src="assets/img/icons/circle-user-solid.svg" width="30px">
+                <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </button>
             </li>
 
           </ul>
 
         </nav>
-        <a href="html/select_service.html" class="btn">Book appointment</a>
+        <a href="../html/select_service.html" class="btn">Book appointment</a>
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
-          <img src="assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
-          <img src="assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
+          <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
+          <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
         </button>
       </div>
     </div>
@@ -77,7 +77,7 @@
     <div class="bg-modal" id="myForm">
       <div class="container-form-login">
         <header>Sign In to Book/Manage Appointments
-        <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeForm()">
+        <img src="../assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeForm()">
       </header>
       <form action="#">
         <div class="input-field">
@@ -106,7 +106,7 @@
     <div class="bg-modal" id="registration-form">
       <div class="container-form-registration" >
         <header>Registration 
-          <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeRegistrationForm()">
+          <img src="../assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeRegistrationForm()">
           </header>
         <form action="#">
             <div class="form first">
@@ -196,8 +196,24 @@
     </div>
     
   </div>
-  <!-- Banner -->
+  <!-- Doctors Available -->
+  <section class="team" id="team">
+    <div class="container"> 
+        <h1 class="heading text-center"> Avaialbel Doctors</h1>
 
+        <div class="show-doctor-container">
+            <div class="doctors-profile">
+                <div class="image">
+                    <img src="../assets/img/images/service-icon-1.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>john lacy</h3>
+                    <span>genral surgeon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
   <!-- -->
 </body>
 <footer class="footer">

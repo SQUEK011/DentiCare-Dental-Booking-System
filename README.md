@@ -14,3 +14,6 @@ Root
 |-assets
  |--img
  |--mysql
+
+### Important Info
+in appointment booking, state only can book one month in advance 

@@ -67,3 +67,21 @@ window.addEventListener("scroll", function () {
 /*----------*/
 
 /*-----Validation-----*/
+
+/*----Registration/Login Form-----*/
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+function openRegistrationForm(){
+  document.getElementById("registration-form").style.display = "block";
+  document.getElementById("myForm").style.display = "none";
+}
+
+function closeRegistrationForm(){
+  document.getElementById("registration-form").style.display = "none";
+}
