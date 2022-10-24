@@ -1,423 +1,466 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+      href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 
-  <!--favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicon/site.webmanifest">
-  <!--CSS-->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <!--NAV Component-->
-  <header class="header">
-    <div class="header-top">
-      <div class="container">
-        <ul class="contact-list">
-          <li class="contact-item">
-            <div class="icon-mail">
-              <img src="assets/img/icons/envelope-solid.svg" width="14px" height="14px">
-            </div>
-            <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
-          </li>
-          <li class="contact-item">
-            <div class="icon-phone">
-              <img src="assets/img/icons/phone-solid.svg" width="14px" height="14px">
-            </div>
-            <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="header-bottom" data-header>
-      <div class="container">
-        <a href="#" class="logo">DentiCare</a>
-        <nav class="navbar container" data-navbar>
-          <ul class="navbar-list">
-
-            <li>
-              <a href="#" class="navbar-link" data-nav-link>Home</a>
+  <body>
+    <!--NAV Component-->
+    <header class="header">
+      <div class="header-top">
+        <div class="container">
+          <ul class="contact-list">
+            <li class="contact-item">
+              <div class="icon-mail">
+                <img src="assets/img/icons/envelope-solid.svg" width="14px"
+                  height="14px">
+              </div>
+              <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
             </li>
-
-            <li>
-              <a href="#" class="navbar-link" data-nav-link>About Us</a>
+            <li class="contact-item">
+              <div class="icon-phone">
+                <img src="assets/img/icons/phone-solid.svg" width="14px"
+                  height="14px">
+              </div>
+              <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
             </li>
-
-            <li>
-              <a href="#" class="navbar-link" data-nav-link>Doctors</a>
-            </li>
-
-            <li>
-              <button class="navbar-link" onclick="openForm()" data-nav-link>
-                <img src="assets/img/icons/circle-user-solid.svg" width="30px">
-              </button>
-            </li>
-
           </ul>
+        </div>
+      </div>
+      <div class="header-bottom" data-header>
+        <div class="container">
+          <a href="#" class="logo">DentiCare</a>
+          <nav class="navbar container" data-navbar>
+            <ul class="navbar-list">
 
-        </nav>
-        <a href="html/select_service.html" class="btn">Book appointment</a>
-        <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
-          <img src="assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
-          <img src="assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
-        </button>
-      </div>
-    </div>
-  </header>
-  <!-- Login Form-->
-  <div class="login form-section">
-    <div class="bg-modal" id="myForm">
-      <div class="container-form-login">
-        <header>Sign In to Book/Manage Appointments
-        <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeForm()">
-      </header>
-      <form action="#">
-        <div class="input-field">
-          <label>Username: </label>
-          <input type="text" size="40" placeholder="Enter your email" required>
+              <li>
+                <a href="#" class="navbar-link" data-nav-link>Home</a>
+              </li>
+
+              <li>
+                <a href="#" class="navbar-link" data-nav-link>About Us</a>
+              </li>
+
+              <li>
+                <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+              </li>
+
+              <li>
+                <button class="navbar-link" onclick="openForm()" data-nav-link>
+                  <img src="assets/img/icons/circle-user-solid.svg"
+                    width="30px">
+                </button>
+              </li>
+
+            </ul>
+
+          </nav>
+          <a href="html/select_service.html" class="btn">Book appointment</a>
+          <button class="nav-toggle-btn" aria-label="Toggle menu"
+            data-nav-toggler>
+            <img src="assets/img/icons/bars-solid.svg" width="20px"
+              aria-hidden="true" class="menu-icon">
+            <img src="assets/img/icons/xmark-solid.svg" width="20px"
+              aria-hidden="true" class="close-icon">
+          </button>
         </div>
-        <div class="input-field">
-          <label>Username: </label>
-          <input type="password" size="40" placeholder="Enter your password" required>
-        </div>
-        <a href="#" class="text">Forget Password?</a>
-        <button class="submitBtn">
-          <span class="btnText">Sign In</span>
-      </button>
-      </form>
-      <div class="login-signup">
-        <span class="text">Not a member?
-            <a href="#" class="text signup-link" onclick="openRegistrationForm()">Signup Now</a>
-        </span>
-    </div>
       </div>
-    </div>
-  </div>
-  <!-- Registration Form-->
-  <div class="registration form-section" >
-    <div class="bg-modal" id="registration-form">
-      <div class="container-form-registration" >
-        <header>Registration 
-          <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close" onclick="closeRegistrationForm()">
+    </header>
+    <!-- Login Form-->
+    <div class="login form-section">
+      <div class="bg-modal" id="myForm">
+        <div class="container-form-login">
+          <header>Sign In to Book/Manage Appointments
+            <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close"
+              onclick="closeForm()">
           </header>
-        <form action="#">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Personal Details</span>
-  
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="Enter your name" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Date of Birth</label>
-                            <input type="date" placeholder="Enter birth date" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Email</label>
-                            <input type="text" placeholder="Enter your email" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Gender</label>
-                            <select required>
-                                <option disabled selected>Select gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Occupation</label>
-                            <input type="text" placeholder="Enter your ccupation" required>
-                        </div>
-                    </div>
-                </div>
-  
-                <div class="details ID">
-                    <span class="title">Identity Details</span>
-  
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>ID Type</label>
-                            <input type="text" placeholder="Enter ID type" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>ID Number</label>
-                            <input type="number" placeholder="Enter ID number" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Issued Authority</label>
-                            <input type="text" placeholder="Enter issued authority" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Issued State</label>
-                            <input type="text" placeholder="Enter issued state" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Issued Date</label>
-                            <input type="date" placeholder="Enter your issued date" required>
-                        </div>
-  
-                        <div class="input-field">
-                            <label>Expiry Date</label>
-                            <input type="date" placeholder="Enter expiry date" required>
-                        </div>
-                    </div>
-  
-                    <button class="submitBtn">
-                        <span class="btnText">Submit</span>
-                    </button>
-                </div> 
+          <form action="#">
+            <div class="input-field">
+              <label>Username: </label>
+              <input type="text" size="40" placeholder="Enter your email"
+                required>
             </div>
-        </form>
-    </div>
-    </div>
-    
-  </div>
-  <!-- Banner -->
-  <section class="banner" id="home" style="background-image: url('assets/img/images/banner\ bg\ image.png')"
-  aria-label="banner">
-  <div class="container">
-
-    <div class="banner-content">
-
-      <p class="banner-subtitle">Welcome To DentiCare</p>
-
-      <h1 class="h1 banner-title">We are Best Dental Service</h1>
-
-      <p class="banner-text">
-        Donec vitae libero non enim placerat eleifend aliquam erat volutpat. Curabitur diam ex, dapibus purus
-        sapien, cursus sed
-        nisl tristique, commodo gravida lectus non.
-      </p>
-
-      <form action="" class="banner-form">
-        <input type="email" name="email_address" aria-label="email" placeholder="Your Email Address..." required
-          class="email-field">
-
-        <button type="submit" class="btn">Get Call Back</button>
-      </form>
-
-    </div>
-
-    <figure class="banner-banner">
-      <img src="assets/img/images/hero-banner.png" width="587" height="839" alt="dentist banner image" class="w-100">
-    </figure>
-
-  </div>
-</section>
-  <!--Our Services -->
-  <section class="services" id="services">
-    <div class="container">
-        <h1 class="heading"> our services</h1>
-        <form action="#">
-            <div class="box-container">
-                <div class="box" name="online-schedule" onclick="submit()">
-                    <img src="assets/img/images/services-1.webp" alt="">
-                    <h3>online schedule</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                </div>
-
-                <div class="box" name="cosmetic-feeling" onclick="submit()">
-                    <img src="assets/img/images/services-2.webp" alt="">
-                    <h3>cosmetic feeling</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                </div>
-
-                <div class="box" name="oral-hygiene" onclick="submit()">
-                    <img src="assets/img/images/services-3.webp" alt="">
-                    <h3>oral hygiene experts</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                </div>
+            <div class="input-field">
+              <label>Username: </label>
+              <input type="password" size="40" placeholder="Enter your password"
+                required>
             </div>
-        </form>
-    </div>
-</section>
-
-<!--Our Doctors-->
-<section class="doctors" id="doctors">
-  <div class="container">
-      <h1 class="heading"> Our Doctors</h1>
-      <form action="#">
-          <div class="box-container">
-              <div class="box" name="Doctor A" onclick="submit()">
-                  <img src="../assets/img/images/services-1.webp" alt="">
-                  <h3>Doctor A</h3>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-              </div>
-
-              <div class="box" name="Doctor B" onclick="submit()">
-                  <img src="../assets/img/images/services-2.webp" alt="">
-                  <h3>Doctor B</h3>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-              </div>
-
-              <div class="box" name="Doctor C" onclick="submit()">
-                  <img src="../assets/img/images/services-3.webp" alt="">
-                  <h3>Doctor C</h3>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-              </div>
+            <a href="#" class="text">Forget Password?</a>
+            <button class="submitBtn">
+              <span class="btnText">Sign In</span>
+            </button>
+          </form>
+          <div class="login-signup">
+            <span class="text">Not a member?
+              <a href="#" class="text signup-link"
+                onclick="openRegistrationForm()">Signup Now</a>
+            </span>
           </div>
-      </form>
-  </div>
-</section>
-
-<!--Testimonial-->
-<div class="testimonials">
-  <div class="inner">
-    <h1 class="heading">Customer's Experience</h1>
-    <div class="border"></div>
-
-    <div class="testimonial-row">
-      <div class="testimonial-col">
-        <div class="testimonial">
-          <img src="assets/img/images/p1.png" alt="">
-          <div class="name">Full name</div>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          </p>
-        </div>
-      </div>
-
-      <div class="testimonial-col">
-        <div class="testimonial">
-          <img src="assets/img/images/p2.png" alt="">
-          <div class="name">Full name</div>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          </p>
-        </div>
-      </div>
-
-      <div class="testimonial-col">
-        <div class="testimonial">
-          <img src="assets/img/images/p3.png" alt="">
-          <div class="name">Full name</div>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          </p>
         </div>
       </div>
     </div>
-  </div>
+    <!-- Registration Form-->
+    <div class="registration form-section">
+      <div class="bg-modal" id="registration-form">
+        <div class="container-form-registration">
+          <header>Registration
+            <img src="assets/img/icons/xmark-solid.svg" width="14px" alt="close"
+              onclick="closeRegistrationForm()">
+          </header>
+          <form action="#">
+            <div class="form first">
+              <div class="details personal">
+                <span class="title">Personal Details</span>
 
-<!--Contact Us-->
-<div class="contactus-container">
-  <div class="contactus-form">
-    <div class="contact-info">
-      <h3 class="contact-title">Let's get in touch</h3>
-      <p class="contact-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-        dolorum adipisci recusandae praesentium dicta!
-      </p>
+                <div class="fields">
+                  <div class="input-field">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                  </div>
 
-      <div class="contact-info">
-        <div class="contact-information">
-          <img src="assets/img/images/location.png" class="contact-icon" alt="" />
-          <p>92 Cherry Drive, NY 11553</p>
-        </div>
-        <div class="contact-information">
-          <img src="assets/img/images/email.png" class="contact-icon" alt="" />
-          <p>lorem@ipsum.com</p>
-        </div>
-        <div class="contact-information">
-          <img src="assets/img/images/phone.png" class="contact-icon" alt="" />
-          <p>123-456-789</p>
-        </div>
-      </div>
-    </div>
+                  <div class="input-field">
+                    <label>Date of Birth</label>
+                    <input type="date" placeholder="Enter birth date" required>
+                  </div>
 
-    <div class="contact-form">
-      <form action="index.html">
-        <h3 class="contact-title">Contact us</h3>
-        <div class="contactus-input-container">
-          <input type="text" placeholder="Name" class="contact-input" />
-        </div>
-        <div class="contactus-input-container">
-          <input type="email" placeholder="E-Mail" class="contact-input" />
-        </div>
-        <div class="contactus-input-container">
-          <input type="tel" placeholder="Phone Number" class="contact-input" />
- 
-        </div>
-        <div class="contactus-input-container textarea">
-          <textarea placeholder="Message" class="contact-input"></textarea>
-        </div>
-        <input type="submit" value="Send" class="contact-btn" />
-      </form>
-    </div>
-  </div>
-</div>
+                  <div class="input-field">
+                    <label>Email</label>
+                    <input type="text" placeholder="Enter your email" required>
+                  </div>
 
-</body>
+                  <div class="input-field">
+                    <label>Mobile Number</label>
+                    <input type="number" placeholder="Enter mobile number"
+                      required>
+                  </div>
 
+                  <div class="input-field">
+                    <label>Gender</label>
+                    <select required>
+                      <option disabled selected>Select gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Others</option>
+                    </select>
+                  </div>
 
+                  <div class="input-field">
+                    <label>Occupation</label>
+                    <input type="text" placeholder="Enter your ccupation"
+                      required>
+                  </div>
+                </div>
+              </div>
 
+              <div class="details ID">
+                <span class="title">Identity Details</span>
 
-<!--Footer-->
-<footer class="footer">
+                <div class="fields">
+                  <div class="input-field">
+                    <label>ID Type</label>
+                    <input type="text" placeholder="Enter ID type" required>
+                  </div>
 
-  <div class="footer-top">
-    <div class="container">
-      <h1 class="text-center">DentiCare Dental Clinic</h1>
-      <div class="box-container">
-        <div class="box">
-          <h3>Quick Links</h3>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Doctors</a>
-        </div>
-        <div class="box">
-          <h3>Contact Us</h3>
-          <a href="#"> +123-456-7890 </a>
-          <a href="#"> shaikhanas@gmail.com </a>
-          <a href="#"> mumbai, india - 400104 </a>
-        </div>
-        <div class="box-message">
-          <h3>Send Us a Message</h3>
-          <form action="#" method="get">
-            <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name"/>
-            <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
-            <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
-            <input type="submit">
+                  <div class="input-field">
+                    <label>ID Number</label>
+                    <input type="number" placeholder="Enter ID number" required>
+                  </div>
+
+                  <div class="input-field">
+                    <label>Issued Authority</label>
+                    <input type="text" placeholder="Enter issued authority"
+                      required>
+                  </div>
+
+                  <div class="input-field">
+                    <label>Issued State</label>
+                    <input type="text" placeholder="Enter issued state"
+                      required>
+                  </div>
+
+                  <div class="input-field">
+                    <label>Issued Date</label>
+                    <input type="date" placeholder="Enter your issued date"
+                      required>
+                  </div>
+
+                  <div class="input-field">
+                    <label>Expiry Date</label>
+                    <input type="date" placeholder="Enter expiry date" required>
+                  </div>
+                </div>
+
+                <button class="submitBtn">
+                  <span class="btnText">Submit</span>
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
-    </div>
-  </div>
-  </div>
 
-  <div class="footer-bottom text-center">
-    <div class="container">
-      <p class="copyright">
-        CopyRight &copy; 2022 DentiCare Dental Clinic
-      </p>
     </div>
-  </div>
-  <!--Javascript files-->
-  <script src="assets/js/scripts.js" defer></script>
-</footer>
+    <!-- Banner -->
+    <section class="banner" id="home" style="background-image:
+      url('assets/img/images/banner\ bg\ image.png')"
+      aria-label="banner">
+      <div class="container">
+
+        <div class="banner-content">
+          <h1 class="h1 banner-title">Welcome to DentiCare</h1>
+
+          <p class="banner-text">
+            Your smile is your best accessory! Let our best dentists take care
+            of you and your smile.
+          </p>
+
+          <form action="" class="banner-form">
+            <input type="email" name="email_address" aria-label="email"
+              placeholder="Your Email Address..." required
+              class="email-field">
+
+            <button type="submit" class="btn">Register with Us</button>
+          </form>
+
+        </div>
+
+        <figure class="banner-banner">
+          <img src="assets/img/images/hero-banner.png" width="auto" height="700"
+            alt="dentist banner image">
+        </figure>
+
+      </div>
+    </section>
+    <!--Our Services -->
+    <section class="services" id="services">
+      <div class="container">
+        <h1 class="heading"> our services</h1>
+        <div class="border"></div>
+        <p class="servicescaption">Learn more about the services that we provide
+          at DentiCare!</p>
+        <form action="#">
+          <div class="box-container">
+            <div class="box" name="online-schedule" onclick="submit()">
+              <img src="assets/img/images/services-1.webp" alt="">
+              <h3>online schedule</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+
+            <div class="box" name="cosmetic-feeling" onclick="submit()">
+              <img src="assets/img/images/services-2.webp" alt="">
+              <h3>cosmetic feeling</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+
+            <div class="box" name="oral-hygiene" onclick="submit()">
+              <img src="assets/img/images/services-3.webp" alt="">
+              <h3>oral hygiene experts</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!--Our Doctors-->
+    <section class="doctors" id="doctors">
+      <div class="container">
+        <h1 class="heading"> Our Doctors</h1>
+        <div class="border"></div>
+        <p class="doctorscaption">Meet our team of professional dentists
+          dedicated to brighten your smile!</p>
+        <form action="#">
+          <div class="box-container">
+            <div class="box" name="Doctor A" onclick="submit()">
+              <img src="assets/img/images/doctor1.png" alt="Doctor A">
+              <h3>Dr Lewis</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+
+            <div class="box" name="Doctor B" onclick="submit()">
+              <img src="assets/img/images/doctor2.png" alt="Doctor B">
+              <h3>Dr David</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+
+            <div class="box" name="Doctor C" onclick="submit()">
+              <img src="assets/img/images/doctor3.png" alt="Doctor C">
+              <h3>Dr Carol</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                in excepturi.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!--Testimonial-->
+    <div class="testimonials">
+      <div class="inner">
+        <h1 class="heading">Customer's Experience</h1>
+        <div class="border"></div>
+
+        <di v class="testimonial-row">
+          <div class="testimonial-col">
+            <div class="testimonial">
+              <img src="assets/img/images/p1.png" alt="">
+              <div class="name">Full name</div>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,
+              </p>
+            </div>
+          </div>
+
+          <div class="testimonial-col">
+            <div class="testimonial">
+              <img src="assets/img/images/p2.png" alt="">
+              <div class="name">Full name</div>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,
+              </p>
+            </div>
+          </div>
+
+          <div class="testimonial-col">
+            <div class="testimonial">
+              <img src="assets/img/images/p3.png" alt="">
+              <div class="name">Full name</div>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s,
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Contact Us-->
+      <div class="contactus-container">
+        <div class="contactus-form">
+          <div class="contact-info">
+            <h3 class="contact-title">Let's get in touch</h3>
+            <p class="contact-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+              dolorum adipisci recusandae praesentium dicta!
+            </p>
+
+            <div class="contact-info">
+              <div class="contact-information">
+                <img src="assets/img/images/location.png" class="contact-icon"
+                  alt="" />
+                <p>92 Cherry Drive, NY 11553</p>
+              </div>
+              <div class="contact-information">
+                <img src="assets/img/images/email.png" class="contact-icon"
+                  alt="" />
+                <p>lorem@ipsum.com</p>
+              </div>
+              <div class="contact-information">
+                <img src="assets/img/images/phone.png" class="contact-icon"
+                  alt="" />
+                <p>123-456-789</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form action="index.html">
+              <h3 class="contact-title">Contact us</h3>
+              <div class="contactus-input-container">
+                <input type="text" placeholder="Name" class="contact-input" />
+              </div>
+              <div class="contactus-input-container">
+                <input type="email" placeholder="E-Mail" class="contact-input"
+                  />
+              </div>
+              <div class="contactus-input-container">
+                <input type="tel" placeholder="Phone Number"
+                  class="contact-input" />
+
+              </div>
+              <div class="contactus-input-container textarea">
+                <textarea placeholder="Message" class="contact-input"></textarea>
+              </div>
+              <input type="submit" value="Send" class="contact-btn" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </body>
+
+
+
+
+    <!--Footer-->
+    <footer class="footer">
+
+      <div class="footer-top">
+        <div class="container">
+          <h1 class="text-center">DentiCare Dental Clinic</h1>
+          <div class="box-container">
+            <div class="box">
+              <h3>Quick Links</h3>
+              <a href="#">Home</a>
+              <a href="#">About Us</a>
+              <a href="#">Doctors</a>
+            </div>
+            <div class="box">
+              <h3>Contact Us</h3>
+              <a href="#"> +123-456-7890 </a>
+              <a href="#"> shaikhanas@gmail.com </a>
+              <a href="#"> mumbai, india - 400104 </a>
+            </div>
+            <div class="box-message">
+              <h3>Send Us a Message</h3>
+              <form action="#" method="get">
+                <input type="text" class="input-text-name" name="contactName"
+                  size="40" placeholder="Enter your name"/>
+                <input type="email" class="input-text-email" size="40"
+                  placeholder="Enter your email">
+                <textarea placeholder='Enter comment...' maxlength='1000'
+                  minlength='100'></textarea>
+                <input type="submit">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+      <div class="container">
+        <p class="copyright">
+          CopyRight &copy; 2022 DentiCare Dental Clinic
+        </p>
+      </div>
+    </div>
+    <!--Javascript files-->
+    <script src="assets/js/scripts.js" defer></script>
+  </footer>
 
 </html>
