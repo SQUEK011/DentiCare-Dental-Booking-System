@@ -18,6 +18,7 @@
 
 <?php
   session_start();
+  
 
   if (isset($_GET['isLogin'])){
     openLoginForm();
@@ -28,7 +29,7 @@
   }
   function openLoginForm(){
     if (isset($_SESSION['use'])){
-      header("Location: ./html/login-test.php");
+      header("Location: ./html/profile.php");
     }
     else {
       header("Location: ./html/login.php");

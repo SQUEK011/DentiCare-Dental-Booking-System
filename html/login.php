@@ -17,51 +17,57 @@
 </head>
 
 <?php
-  session_start();
-  if (isset($_GET['isLogin'])){
+include("../assets/php/db_connection.php");
+$conn = OpenCon();
+session_start();
+
+if (isset($_GET['isLogin'])) {
     openLoginForm();
-  }
+}
 
-  if (isset($_GET['isUser'])){
+if (isset($_GET['isUser'])) {
     bookAppointment();
-  }
-  function openLoginForm(){
-    if (isset($_SESSION['use'])){
-      header("Location: ../html/login-test.php");
+}
+function openLoginForm()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/login-test.php");
+    } else {
+        header("Location: ../html/login.php");
     }
-    else {
-      header("Location: ../html/login.php");
-    }
-  }
+}
 
-  function bookAppointment(){
-    if (isset($_SESSION['use'])){
-      header("Location: ../html/select_service.html");
+function bookAppointment()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/select_service.html");
+    } else {
+        header("Location: ../html/login.php");
     }
-    else {
-      header("Location: ../html/login.php");
-    }
-  }
-  
-  if (isset($_POST['login'])){
+}
+
+if (isset($_POST['login'])) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
 
-     if($user == "amktree" && $pass == "1234")  // username is  set to "Ank"  and Password   
-        {                                   // is 1234 by default     
+    $sql = "SELECT EXISTS (
+        SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'
+      )";
 
-         $_SESSION['use']=$user;
+    $result = $conn->query($sql);
 
+    if ($result == 1)  // username is  set to "Ank"  and Password   
+    {                                   // is 1234 by default     
 
+        $_SESSION['use'] = $user;
+
+        echo '<script type="text/javascript"> alert("Login Successful!");</script>';
         echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
 
-       }
-
-       else
-       {
-           echo "invalid UserName or Password";        
-       }
-  }
+    } else {
+        echo "invalid UserName or Password";
+    }
+}
 
 ?>
 
@@ -124,30 +130,30 @@
     <!-- Login Form-->
     <div class="form-section">
         <!--div class="bg-modal" id="myForm"-->
-            <div class="container-form-login">
-                <header>Sign In to Book/Manage Appointments
-                    
-                </header>
-                <form action="" method="post">
-                    <div class="input-field">
-                        <label>Username: </label>
-                        <input type="text" name="user" size="40" placeholder="Enter your email" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Username: </label>
-                        <input type="password" name="pass" size="40" placeholder="Enter your password" required>
-                    </div>
-                    <a href="#" class="text">Forget Password?</a>
-                    <button class="submitBtn" name="login">
-                        <span class="btnText" >Sign In</span>
-                    </button>
-                </form>
-                <div class="login-signup">
-                    <span class="text">Not a member?
-                        <a href="../html/registration.php" class="text signup-link">Signup Now</a>
-                    </span>
+        <div class="container-form-login">
+            <header>Sign In to Book/Manage Appointments
+
+            </header>
+            <form action="" method="post">
+                <div class="input-field">
+                    <label>Username: </label>
+                    <input type="text" name="user" size="40" placeholder="Enter your email" required>
                 </div>
+                <div class="input-field">
+                    <label>Username: </label>
+                    <input type="password" name="pass" size="40" placeholder="Enter your password" required>
+                </div>
+                <a href="#" class="text">Forget Password?</a>
+                <button class="submitBtn" name="login">
+                    <span class="btnText">Sign In</span>
+                </button>
+            </form>
+            <div class="login-signup">
+                <span class="text">Not a member?
+                    <a href="../html/registration.php" class="text signup-link">Signup Now</a>
+                </span>
             </div>
+        </div>
         <!--/div-->
     </div>
 
@@ -174,8 +180,7 @@
                 <div class="box-message">
                     <h3>Send Us a Message</h3>
                     <form action="#" method="get">
-                        <input type="text" class="input-text-name" name="contactName" size="40"
-                            placeholder="Enter your name" />
+                        <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name" />
                         <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
                         <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
                         <input type="submit">
@@ -196,5 +201,8 @@
     <!--Javascript files-->
     <script src="../assets/js/scripts.js" defer></script>
 </footer>
+<?php
+CloseCon($conn);
+?>
 
 </html>

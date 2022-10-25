@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+<?php 
+session_start();
+
+$_SESSION["service_selected"] = $_GET['select_service'];
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
