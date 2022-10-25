@@ -39,12 +39,12 @@
     </div>
     <div class="header-bottom" data-header>
       <div class="container">
-        <a href="#" class="logo">DentiCare</a>
+        <a href="../index.php" class="logo">DentiCare</a>
         <nav class="navbar container" data-navbar>
           <ul class="navbar-list">
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Home</a>
+              <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
             </li>
 
             <li>
@@ -56,7 +56,7 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>
+              <a href="profile.php?isLogin=true" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>
@@ -64,7 +64,7 @@
           </ul>
 
         </nav>
-        <a href="#" class="btn">Book appointment</a>
+        <a href="profile.php?isUser=true" class="btn">Book appointment</a>
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
           <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
           <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -73,13 +73,101 @@
     </div>
   </header>
 
-  <!-- Banner -->
+  <!--Show Profile-->
+  <section class="profile">
+    <div class="container">
+      <header>Profile</header>
+      <a href="profile.php?logout=true" style="float:right;">
+        <button type="submit" class="logout-btn">Logout</button>
+      </a>
+      <div class="profile-container">
+        <div class="personal-details-container">
+        <span class="title">Personal Details</span>
+          <div class="fields">
+            <div class="details-field">
+              <label>Full Name</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Date of Birth</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>NRIC</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Mobile Number</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Gender</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Occupation</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Email</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Allergies</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field" hidden>
+              
+            </div>
+            <div class="details-field">
+              <label>Address 1</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Address 2</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Postal Code</label>
+              <span class="label-result"></span>
+            </div>
+          </div>
+        </div>
+        <div class="emergency-contact-container">
+          <span class="title">Emergency Contact</span>
+          <div class="fields">
+            <div class="details-field">
+              <label>Emergency Contact Name</label>
+              <span class="label-result"></span>            </div>
 
-  <!-- -->
+            <div class="details-field">
+              <label>Emergency Contact Number</label>
+              <span class="label-result"></span>            </div>
+
+            <div class="details-field">
+              <label>Relationship with Contact</label>
+              <span class="label-result"></span>            </div>
+          </div>
+        </div>
+        <div class="next-appointment-container">
+          <span class="title">Next Appointment</span>
+          <div class="box-appointment">
+            <label>Service: </label>
+            <span class="label-result"></span>   
+            <label>Doctor</label>
+            <span class="label-result"></span>   
+            <label>Timeslot: </label>
+            <span class="label-result"></span>   
+          </div>
+        </div>
+        <button class="edit-appointment-btn">Edit Appointment</button>
+      </div>
+    </div>
+  </section>
 </body>
 <footer class="footer">
 
-  <div class="footer-top section">
+  <div class="footer-top">
     <div class="container">
       <h1 class="text-center">DentiCare Dental Clinic</h1>
       <div class="box-container">
@@ -98,19 +186,14 @@
         <div class="box-message">
           <h3>Send Us a Message</h3>
           <form action="#" method="get">
-            <input type="text" class="input-text-name" placeholder="Enter your name">
-          <input type="email" class="input-text-email" placeholder="Enter your name">
-          <input type="textarea" class="input-text" placeholder="Enter your message here" />
-          <input type="submit">
+            <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name" />
+            <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
+            <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
+            <input type="submit">
           </form>
         </div>
       </div>
-
-
-
     </div>
-
-  </div>
   </div>
 
   <div class="footer-bottom text-center">

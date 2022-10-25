@@ -50,13 +50,11 @@ if (isset($_POST['login'])) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
 
-    $sql = "SELECT EXISTS (
-        SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'
-      )";
+    $sql = "SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
 
-    $result = $conn->query($sql);
+    $result = mysqli_num_rows($conn->query($sql));
 
-    if ($result == 1)  // username is  set to "Ank"  and Password   
+    if ($result > 0)  // username is  set to "Ank"  and Password   
     {                                   // is 1234 by default     
 
         $_SESSION['use'] = $user;
@@ -140,17 +138,17 @@ if (isset($_POST['login'])) {
                     <input type="text" name="user" size="40" placeholder="Enter your email" required>
                 </div>
                 <div class="input-field">
-                    <label>Username: </label>
+                    <label>Password: </label>
                     <input type="password" name="pass" size="40" placeholder="Enter your password" required>
                 </div>
-                <a href="#" class="text">Forget Password?</a>
+                <a href="#" class="text">Forget Password?</a><br>
                 <button class="submitBtn" name="login">
                     <span class="btnText">Sign In</span>
                 </button>
             </form>
             <div class="login-signup">
                 <span class="text">Not a member?
-                    <a href="../html/registration.php" class="text signup-link">Signup Now</a>
+                    <a href="../html/registration.php" class="text signup-link">Sign Up Now</a>
                 </span>
             </div>
         </div>

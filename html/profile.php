@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html>
 
-<?php 
+<?php
+include("../assets/php/db_connection.php");
+$conn = OpenCon();
 session_start();
 
-if (isset($_GET['isLogin'])){
-    openLoginForm();
-  }
+if (isset($_GET['isLogin'])) {
+  openLoginForm();
+}
 
-  if (isset($_GET['isUser'])){
-    bookAppointment();
+if (isset($_GET['isUser'])) {
+  bookAppointment();
+}
+function openLoginForm()
+{
+  if (isset($_SESSION['use'])) {
+    header("Location: ./html/profile.php");
+  } else {
+    header("Location: ./html/login.php");
   }
-  function openLoginForm(){
-    if (isset($_SESSION['use'])){
-      header("Location: ./html/profile.php");
-    }
-    else {
-      header("Location: ./html/login.php");
-    }
-  }
+}
 
-  function bookAppointment(){
-    if (isset($_SESSION['use'])){
-      header("Location: ./html/select_service.html");
-    }
-    else {
-      header("Location: ./html/login.php");
-    }
+function bookAppointment()
+{
+  if (isset($_SESSION['use'])) {
+    header("Location: ./html/select_service.php");
+  } else {
+    header("Location: ./html/login.php");
   }
+}
 
-if (isset($_GET['logout'])){
-    session_destroy();
-    header("Location: ../index.php");
-  }
+if (isset($_GET['logout'])) {
+  session_destroy();
+  header("Location: ../index.php");
+}
+
+$user = $_SESSION['use'];
+echo "$user";
+
+//Get Personal Profile 
+$sql = "SELECT * from user_profile WHERE user_name = '$user'";
+$results = mysqli_fetch_assoc($conn->query($sql));
 ?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
 
-    <!--favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
-    <!--CSS-->
-    <link rel="stylesheet" href="../css/style.css">
+  <!--favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
+  <!--CSS-->
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <!--NAV Component-->
+  <!--NAV Component-->
   <header class="header">
     <div class="header-top">
       <div class="container">
@@ -90,7 +99,7 @@ if (isset($_GET['logout'])){
             </li>
 
             <li>
-              <a href="profile.php?isLogin=true"class="navbar-link" data-nav-link>
+              <a href="profile.php?isLogin=true" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>
@@ -107,71 +116,140 @@ if (isset($_GET['logout'])){
     </div>
   </header>
 
-   <!--Show Profile-->
-   <section class="profile">
-        <div class="container">
-            <header>Profile</header>
-            <div class="personal-details-container">
-                <header>Personal Details</header>
-                <a href="profile.php?logout=true" style="float:right;">
-                    <button type="submit" class="logout-btn" >Logout</button>
-                </a>
+  <!--Show Profile-->
+  <section class="profile">
+    <div class="container">
+      <header>Profile</header>
+      <a href="profile.php?logout=true" style="float:right;">
+        <button type="submit" class="logout-btn">Logout</button>
+      </a>
+      <div class="profile-container">
+        <div class="personal-details-container">
+        <span class="title">Personal Details</span>
+          <div class="fields">
+            <div class="details-field">
+              <label>Full Name</label>
+              <span class="label-result"><?$results["full_name"]?></span>
             </div>
-            <div class="emergency-contact-container">
-                <header>Emergency Contact</header>
+            <div class="details-field">
+              <label>Date of Birth</label>
+              <span class="label-result"></span>
             </div>
-            <div class="next-appointment-container">
-                <header>Next Appointment</header>
+            <div class="details-field">
+              <label>NRIC</label>
+              <span class="label-result"></span>
             </div>
-            <button class="edit-appointment-btn">Edit Appointment</button>
+            <div class="details-field">
+              <label>Mobile Number</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Gender</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Occupation</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Email</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Allergies</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field" hidden>
+              
+            </div>
+            <div class="details-field">
+              <label>Address 1</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Address 2</label>
+              <span class="label-result"></span>
+            </div>
+            <div class="details-field">
+              <label>Postal Code</label>
+              <span class="label-result"></span>
+            </div>
+          </div>
         </div>
-   </section>
+        <div class="emergency-contact-container">
+          <span class="title">Emergency Contact</span>
+          <div class="fields">
+            <div class="details-field">
+              <label>Emergency Contact Name</label>
+              <span class="label-result"></span>            </div>
+
+            <div class="details-field">
+              <label>Emergency Contact Number</label>
+              <span class="label-result"></span>            </div>
+
+            <div class="details-field">
+              <label>Relationship with Contact</label>
+              <span class="label-result"></span>            </div>
+          </div>
+        </div>
+        <div class="next-appointment-container">
+          <span class="title">Next Appointment</span>
+          <div class="box-appointment">
+            <label>Service: </label>
+            <span class="label-result"></span>   
+            <label>Doctor</label>
+            <span class="label-result"></span>   
+            <label>Timeslot: </label>
+            <span class="label-result"></span>   
+          </div>
+        </div>
+        <button class="edit-appointment-btn">Edit Appointment</button>
+      </div>
+    </div>
+  </section>
 </body>
 <footer class="footer">
 
-    <div class="footer-top section">
-        <div class="container">
-            <h1 class="text-center">DentiCare Dental Clinic</h1>
-            <div class="box-container">
-                <div class="box">
-                    <h3>Quick Links</h3>
-                    <a href="../index.php">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Doctors</a>
-                </div>
-                <div class="box">
-                    <h3>Contact Us</h3>
-                    <a href="#"> +123-456-7890 </a>
-                    <a href="#"> shaikhanas@gmail.com </a>
-                    <a href="#"> mumbai, india - 400104 </a>
-                </div>
-                <div class="box-message">
-                    <h3>Send Us a Message</h3>
-                    <form action="#" method="get">
-                        <input type="text" class="input-text-name" placeholder="Enter your name">
-                        <input type="email" class="input-text-email" placeholder="Enter your name">
-                        <input type="textarea" class="input-text" placeholder="Enter your message here" />
-                        <input type="submit">
-                    </form>
-                </div>
-            </div>
-
-
-
+  <div class="footer-top">
+    <div class="container">
+      <h1 class="text-center">DentiCare Dental Clinic</h1>
+      <div class="box-container">
+        <div class="box">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Doctors</a>
         </div>
-
-    </div>
-    </div>
-
-    <div class="footer-bottom text-center">
-        <div class="container">
-            <p class="copyright">
-                CopyRight &copy; 2022 DentiCare Dental Clinic
-            </p>
+        <div class="box">
+          <h3>Contact Us</h3>
+          <a href="#"> +123-456-7890 </a>
+          <a href="#"> shaikhanas@gmail.com </a>
+          <a href="#"> mumbai, india - 400104 </a>
         </div>
+        <div class="box-message">
+          <h3>Send Us a Message</h3>
+          <form action="#" method="get">
+            <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name" />
+            <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
+            <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
     </div>
-    <!--Javascript files-->
-    <script src="../assets/js/scripts.js" defer></script>
+  </div>
+
+  <div class="footer-bottom text-center">
+    <div class="container">
+      <p class="copyright">
+        CopyRight &copy; 2022 DentiCare Dental Clinic
+      </p>
+    </div>
+  </div>
+  <!--Javascript files-->
+  <script src="../assets/js/scripts.js" defer></script>
 </footer>
-
+<?php
+CloseCon($conn);
+?>
 </html>

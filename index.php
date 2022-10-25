@@ -38,7 +38,7 @@
 
   function bookAppointment(){
     if (isset($_SESSION['use'])){
-      header("Location: ./html/select_service.html");
+      header("Location: ./html/select_service.php");
     }
     else {
       header("Location: ./html/login.php");
@@ -69,7 +69,7 @@
     </div>
     <div class="header-bottom" data-header>
       <div class="container">
-        <a href="#" class="logo">DentiCare</a>
+        <a href="index.php" class="logo">DentiCare</a>
         <nav class="navbar container" data-navbar>
           <ul class="navbar-list">
 
@@ -166,7 +166,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <div class="footer-bottom text-center">

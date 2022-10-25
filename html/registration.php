@@ -11,27 +11,88 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+  <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
   <!--CSS-->
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <?php
+include("../assets/php/db_connection.php");
+$conn = OpenCon();
 session_start();
 
-if (isset($_GET['hello'])) {
+if (isset($_GET['isLogin'])) {
   openLoginForm();
+}
+
+if (isset($_GET['isUser'])) {
+  bookAppointment();
 }
 function openLoginForm()
 {
   if (isset($_SESSION['use'])) {
     header("Location: ../html/login-test.php");
   } else {
-    header("Location: ../html/registration.html");
+    header("Location: ../html/login.php");
   }
 }
 
+function bookAppointment()
+{
+  if (isset($_SESSION['use'])) {
+    header("Location: ../html/select_service.html");
+  } else {
+    header("Location: ../html/login.php");
+  }
+}
 
+if (isset($_POST['register'])) {
+  $user = $_POST['getUsername'];
+  $fullname = $_POST['getName'];
+  $dob = $_POST['getDOB'];
+  $nric = $_POST['getNRIC'];
+  $mobileNumber = $_POST['getMobile'];
+  $gender = $_POST['getGender'];
+  $occupation = $_POST['getOccupation'];
+  $email = $_POST['getEmail'];
+  $allergies = $_POST['getAllergies'];
+  $addressOne = $_POST['getAddressOne'];
+  $addressTwo = $_POST['getAddressTwo'];
+  $postal = $_POST['getPostal'];
+  $emergencyName = $_POST['getEmergencyName'];
+  $emergencyContact = $_POST['getEmergencyNumber'];
+  $emergencyRelate = $_POST['getEmergencyRelation'];
+  $password = $_POST['getPassword'];
+  $confirmPass = $_POST['confirmPassword'];
+
+  $sql = "INSERT INTO user_accounts(
+    user_name,pass_word,admin_rights)
+     VALUES ('$user','$password',0);";
+
+if (!mysqli_query($conn, $sql)) {
+  echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
+}
+
+  $sql = "INSERT INTO user_profile(
+    user_name,full_name,nric,D_O_B,gender,
+  occupation,mobile_no,email,allergies,address_1,address_2,
+  postal_code,emergency_contact_name,emergency_contact_no,emergency_contact_relation)
+  VALUES ('$user','$fullname','$nric','$dob','$gender','$occupation',
+  '$mobileNumber','$email','$allergies','$addressOne','$addressTwo','$postal',
+  '$emergencyName','$emergencyContact','$emergencyRelate');";
+
+  if (!mysqli_query($conn, $sql)) {
+    echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
+  }else {
+
+    $_SESSION['use'] = $user;
+
+    echo '<script type="text/javascript"> alert("Register Successful!");</script>';
+    echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
+  }
+
+
+}
 
 ?>
 
@@ -58,12 +119,12 @@ function openLoginForm()
     </div>
     <div class="header-bottom" data-header>
       <div class="container">
-        <a href="#" class="logo">DentiCare</a>
+        <a href="../index.php" class="logo">DentiCare</a>
         <nav class="navbar container" data-navbar>
           <ul class="navbar-list">
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Home</a>
+              <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
             </li>
 
             <li>
@@ -75,7 +136,7 @@ function openLoginForm()
             </li>
 
             <li>
-              <a href="?hello=true" class="navbar-link" data-nav-link>
+              <a href="registration.php" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>
@@ -97,7 +158,7 @@ function openLoginForm()
     <div class="container-form-registration">
       <header>Registration
       </header>
-      <form action="#">
+      <form action="" method="post">
         <div class="form first">
           <div class="details personal">
             <span class="title">Personal Details</span>
@@ -105,27 +166,27 @@ function openLoginForm()
             <div class="fields">
               <div class="input-field">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter your name" required>
+                <input type="text" name="getName" placeholder="Enter your name" required>
               </div>
 
               <div class="input-field">
                 <label>Date of Birth</label>
-                <input type="date" placeholder="Enter birth date" required>
+                <input type="date" name="getDOB" placeholder="Enter birth date" required>
               </div>
 
               <div class="input-field">
-                <label>Email</label>
-                <input type="text" placeholder="Enter your email" required>
+                <label>NRIC</label>
+                <input type="text" name="getNRIC" placeholder="Enter your NRIC" required>
               </div>
 
               <div class="input-field">
                 <label>Mobile Number</label>
-                <input type="number" placeholder="Enter mobile number" required>
+                <input type="text" name="getMobile" placeholder="Enter mobile number" required>
               </div>
 
               <div class="input-field">
                 <label>Gender</label>
-                <select required>
+                <select name="getGender" required>
                   <option disabled selected>Select gender</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -135,54 +196,93 @@ function openLoginForm()
 
               <div class="input-field">
                 <label>Occupation</label>
-                <input type="text" placeholder="Enter your ccupation" required>
+                <input type="text" name="getOccupation" placeholder="Enter your occupation" required>
+              </div>
+
+              <div class="input-field">
+                <label>Email</label>
+                <input type="text" name="getEmail" placeholder="Enter your Email" required>
+              </div>
+
+              <div class="input-field">
+                <label>Allergies (seperate mulitple with ,)</label>
+                <textarea name="getAllergies" placeholder="Enter your allergies" required></textarea>
               </div>
             </div>
           </div>
 
-          <div class="details ID">
-            <span class="title">Identity Details</span>
+          <div class="addresses">
+            <span class="title">Address Details</span>
 
             <div class="fields">
               <div class="input-field">
-                <label>ID Type</label>
-                <input type="text" placeholder="Enter ID type" required>
+                <label>Address 1</label>
+                <input type="text" name="getAddressOne" placeholder="Enter your address" required>
               </div>
 
               <div class="input-field">
-                <label>ID Number</label>
-                <input type="number" placeholder="Enter ID number" required>
+                <label>Address 2</label>
+                <input type="text" name="getAddressTwo" placeholder="Enter your 2nd address" value="NIL">
               </div>
 
               <div class="input-field">
-                <label>Issued Authority</label>
-                <input type="text" placeholder="Enter issued authority" required>
-              </div>
-
-              <div class="input-field">
-                <label>Issued State</label>
-                <input type="text" placeholder="Enter issued state" required>
-              </div>
-
-              <div class="input-field">
-                <label>Issued Date</label>
-                <input type="date" placeholder="Enter your issued date" required>
-              </div>
-
-              <div class="input-field">
-                <label>Expiry Date</label>
-                <input type="date" placeholder="Enter expiry date" required>
+                <label>Postal Code</label>
+                <input type="text" name="getPostal" placeholder="Enter postal code" required>
               </div>
             </div>
 
-            <button class="submitBtn">
-              <span class="btnText">Submit</span>
-            </button>
           </div>
-        </div>
-      </form>
 
+          <div class="emergency contact">
+            <span class="title">Emergeny Contact</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>Emergency Contact Name</label>
+                <input type="text" name="getEmergencyName" placeholder="Enter Emergency Contact Name" required>
+              </div>
+
+              <div class="input-field">
+                <label>Emergency Contact Number</label>
+                <input type="text" name="getEmergencyNumber" placeholder="Enter Emergency Contact Number" required>
+              </div>
+
+              <div class="input-field">
+                <label>Relationship with Contact</label>
+                <input type="text" name="getEmergencyRelation" placeholder="Enter Relationship with Contact" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="account information">
+            <span class="title">Account Information</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>Username</label>
+                <input type="text" name="getUsername" placeholder="Enter Username" required>
+              </div>
+
+              <div class="input-field">
+                <label>Password</label>
+                <input type="text" name="getPassword" placeholder="Enter Password" required>
+              </div>
+
+              <div class="input-field">
+                <label>Confirm Password</label>
+                <input type="text" name="confirmPassword" placeholder="Enter Password again" required>
+              </div>
+            </div>
+          </div>
+
+          <button class="submitBtn" name="register">
+            <span class="btnText">Submit</span>
+          </button>
+        </div>
     </div>
+    </form>
+
+  </div>
 
   </div>
 
@@ -229,5 +329,7 @@ function openLoginForm()
   <!--Javascript files-->
   <script src="assets/js/scripts.js" defer></script>
 </footer>
-
+<?php
+CloseCon($conn)
+?>
 </html>

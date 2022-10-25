@@ -361,7 +361,7 @@ a {
 
 /*Registration Form*/
 .form-section {
-  box-sizing: border-box;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,11 +388,6 @@ a {
   color: #333;
 }
 
-.container-form-registration header img,
-.container-form-login header img {
-  float: right;
-}
-
 .container-form-registration header::before {
   content: "";
   position: absolute;
@@ -409,11 +404,10 @@ a {
   margin-top: 16px;
   min-height: 490px;
   background-color: #fff;
-  overflow: hidden;
 }
 
 .container-form-registration form .form {
-  position: absolute;
+  
   background-color: #fff;
   transition: 0.3s ease;
 }
@@ -507,6 +501,11 @@ form button:hover {
   padding: 10px;
 }
 
+.container-form-login .input-field label{
+  font-size: 14px;
+  font-weight: 200;
+}
+
 .container-form-login header img{
   float: right;
 }
@@ -526,8 +525,22 @@ form button:hover {
 }
 
 .login-signup {
-  margin-top: 30px;
+  margin: 20px 0px 10px;
   text-align: center;
+}
+
+.container-form-login .submitBtn {
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0 10px;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
 }
 
 /*----Choose Services-----*/
@@ -580,6 +593,62 @@ form button:hover {
   font-size: 1.5rem;
   color: #666;
   line-height: 2;
+}
+
+/*Show Profile*/
+.profile header{
+  font-size: 2rem;
+  color: var(--black);
+  font-weight: bolder;
+}
+
+.profile .profile-container{
+  position: relative;
+  width: 100%;
+  padding: 30px 0px;
+  margin: auto;
+}
+
+.profile .profile-container .title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #333;
+}
+
+.profile .profile-container .fields {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile .fields .details-field {
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 4px 0;
+}
+
+.profile .next-appointment-container .box-appointment{
+  background-color: antiquewhite;
+  max-width: 400px;
+}
+
+.profile .edit-appointment-btn {
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0 10px;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
 }
 
 /*-----Show Doctors------*/

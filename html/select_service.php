@@ -45,12 +45,12 @@ $_SESSION["service_selected"] = $_GET['select_service'];
         </div>
         <div class="header-bottom" data-header>
             <div class="container">
-                <a href="../index.html" class="logo">DentiCare</a>
+                <a href="../index.php" class="logo">DentiCare</a>
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
 
                         <li>
-                            <a href="../index.html" class="navbar-link" data-nav-link>Home</a>
+                            <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
 
                         <li>
