@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html>
 
-<?php 
+<?php
+//Database Connection
 session_start();
 
-$_SESSION["service_selected"] = $_GET['select_service'];
+//Header Functions
+if (isset($_GET['isLogin'])) {
+    openLoginForm();
+}
+
+if (isset($_GET['isUser'])) {
+    bookAppointment();
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: ../index.php");
+}
+
+function openLoginForm()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/profile.php");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+function bookAppointment()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/select_service.php");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+if (isset($POST)) {
+    $_SESSION["service_selected"] = $_GET['select_service'];
+}
 ?>
 
 <head>
@@ -62,15 +97,15 @@ $_SESSION["service_selected"] = $_GET['select_service'];
                         </li>
 
                         <li>
-                            <button class="navbar-link" onclick="openForm()" data-nav-link>
+                            <a href="select_service.php?isLogin=true" class="navbar-link" data-nav-link>
                                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
-                            </button>
+                            </a>
                         </li>
 
                     </ul>
 
                 </nav>
-                <a href="#" class="btn">Book appointment</a>
+                <a href="select_service.php?isUser=true" class="btn">Book appointment</a>
                 <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
                     <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
                     <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -83,7 +118,7 @@ $_SESSION["service_selected"] = $_GET['select_service'];
     <section class="services" id="services">
         <div class="container">
             <h1 class="heading"> our services</h1>
-            <form action="#">
+            <form action="" method="POST">
                 <div class="box-container">
 
                     <div class="box" name="online-schedule" onclick="submit()">
@@ -111,49 +146,44 @@ $_SESSION["service_selected"] = $_GET['select_service'];
 </body>
 <footer class="footer">
 
-    <div class="footer-top section">
-        <div class="container">
-            <h1 class="text-center">DentiCare Dental Clinic</h1>
-            <div class="box-container">
-                <div class="box">
-                    <h3>Quick Links</h3>
-                    <a href="#">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Doctors</a>
-                </div>
-                <div class="box">
-                    <h3>Contact Us</h3>
-                    <a href="#"> +123-456-7890 </a>
-                    <a href="#"> shaikhanas@gmail.com </a>
-                    <a href="#"> mumbai, india - 400104 </a>
-                </div>
-                <div class="box-message">
-                    <h3>Send Us a Message</h3>
-                    <form action="#" method="get">
-                        <input type="text" class="input-text-name" placeholder="Enter your name">
-                        <input type="email" class="input-text-email" placeholder="Enter your name">
-                        <input type="textarea" class="input-text" placeholder="Enter your message here" />
-                        <input type="submit">
-                    </form>
-                </div>
-            </div>
-
-
-
+  <div class="footer-top">
+    <div class="container">
+      <h1 class="text-center">DentiCare Dental Clinic</h1>
+      <div class="box-container">
+        <div class="box">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Doctors</a>
         </div>
-
-    </div>
-    </div>
-
-    <div class="footer-bottom text-center">
-        <div class="container">
-            <p class="copyright">
-                CopyRight &copy; 2022 DentiCare Dental Clinic
-            </p>
+        <div class="box">
+          <h3>Contact Us</h3>
+          <a href="#"> +123-456-7890 </a>
+          <a href="#"> shaikhanas@gmail.com </a>
+          <a href="#"> mumbai, india - 400104 </a>
         </div>
+        <div class="box-message">
+          <h3>Send Us a Message</h3>
+          <form action="#" method="get">
+            <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name" />
+            <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
+            <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
     </div>
-    <!--Javascript files-->
-    <script src="../assets/js/scripts.js" defer></script>
+  </div>
+
+  <div class="footer-bottom text-center">
+    <div class="container">
+      <p class="copyright">
+        CopyRight &copy; 2022 DentiCare Dental Clinic
+      </p>
+    </div>
+  </div>
+  <!--Javascript files-->
+  <script src="../assets/js/scripts.js" defer></script>
 </footer>
 
 </html>

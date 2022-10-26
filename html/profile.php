@@ -15,74 +15,70 @@ if (isset($_GET['isLogin'])) {
 if (isset($_GET['isUser'])) {
   bookAppointment();
 }
-function openLoginForm()
-{
-  if (isset($_SESSION['use'])) {
-    header("Location: ./html/profile.php");
-  } else {
-    header("Location: ./html/login.php");
-  }
-}
-
-function bookAppointment()
-{
-  if (isset($_SESSION['use'])) {
-    header("Location: ./html/select_service.php");
-  } else {
-    header("Location: ./html/login.php");
-  }
-}
-
-/*For Personal Profile*/
-//Declare required variables 
-  $fullname = 
-  $dob = 
-  $nric = 
-  $mobileNumber =
-  $gender = 
-  $occupation = 
-  $email = 
-  $allergies = 
-  $addressOne = 
-  $addressTwo = 
-  $postal = 
-  $emergencyName = 
-  $emergencyContact = 
-  $emergencyRelate = "";
-
-  $profileArray = array();
-  
 
 if (isset($_GET['logout'])) {
   session_destroy();
   header("Location: ../index.php");
 }
 
-$user = $_SESSION['use'];
-echo "$user";
-
-//Get Personal Profile 
-$sql = "SELECT * from user_profile WHERE user_name = '$user'";
-if (mysqli_num_rows($conn->query($sql)) > 0){
-  while ($row = $conn->query($sql)->fetch_assoc()){
-    $fullname = $row['full_name'];
-    $dob = $row['D_O_B'];
-    $nric = $row['nric'];
-    $mobileNumber = $row['nric'];
-    $gender = $row['gender'];
-    $occupation = $row['occupation'];
-    $email = $row['email'];
-    $allergies = $row['allergies'];
-    $addressOne = $row['address_1'];
-    $addressTwo = $row['address_2'];
-    $postal = $row['postal_code'];
-    $emergencyName = $row['emergency_contact_name'];
-    $emergencyContact = $row['emergency_contact_no'];
-    $emergencyRelate = $row['emergency_contact_relation'];
+function openLoginForm()
+{
+  if (isset($_SESSION['use'])) {
+    header("Location: ../html/profile.php");
+  } else {
+    header("Location: ../html/login.php");
   }
 }
 
+function bookAppointment()
+{
+  if (isset($_SESSION['use'])) {
+    header("Location: ../html/select_service.php");
+  } else {
+    header("Location: ../html/login.php");
+  }
+}
 
+$user = $_SESSION['use'];
+
+/*For Personal Profile*/
+//Get Personal Profile 
+$fullname =
+  $dob =
+  $nric =
+  $mobileNumber =
+  $gender =
+  $occupation =
+  $email =
+  $allergies =
+  $addressOne =
+  $addressTwo =
+  $postal =
+  $emergencyName =
+  $emergencyContact =
+  $emergencyRelate = "";
+
+$sql = "SELECT * from user_profile where user_name = '$user'";
+$results = $conn->query($sql);
+
+while ($row = $results->fetch_assoc()) {
+  $fullname = $row['full_name'];
+  $dob = $row['D_O_B'];
+  $nric = $row['nric'];
+  $mobileNumber = $row['mobile_no'];
+  $gender = $row['gender'];
+  $occupation = $row['occupation'];
+  $email = $row['email'];
+  $allergies = $row['allergies'];
+  $addressOne = $row['address_1'];
+  $addressTwo = $row['address_2'];
+  $postal = $row['postal_code'];
+  $emergencyName = $row['emergency_contact_name'];
+  $emergencyContact = $row['emergency_contact_no'];
+  $emergencyRelate = $row['emergency_contact_relation'];;
+}
+
+mysqli_free_result($results);
 ?>
 
 <head>
@@ -160,60 +156,60 @@ if (mysqli_num_rows($conn->query($sql)) > 0){
   <!--Show Profile-->
   <section class="profile">
     <div class="container">
-      <header>Profile</header>
-      <a href="profile.php?logout=true" style="float:right;">
-        <button type="submit" class="logout-btn">Logout</button>
-      </a>
       <div class="profile-container">
-        <div class="personal-details-container">s
-        <span class="title">Personal Details</span>
+        <header>Profile</header>
+        <a href="profile.php?logout=true" style="float:right;">
+          <button type="submit" class="logout-btn">Logout</button>
+        </a>
+        <div class="personal-details-container">
+          <span class="title">Personal Details</span>
           <div class="fields">
             <div class="details-field">
               <label>Full Name</label>
-              <span class="label-result"><?$fullname?></span>
+              <span class="label-result"><?= $fullname ?></span>
             </div>
             <div class="details-field">
               <label>Date of Birth</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $dob ?></span>
             </div>
             <div class="details-field">
               <label>NRIC</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $nric ?></span>
             </div>
             <div class="details-field">
               <label>Mobile Number</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $mobileNumber ?></span>
             </div>
             <div class="details-field">
               <label>Gender</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $gender ?></span>
             </div>
             <div class="details-field">
               <label>Occupation</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $occupation ?></span>
             </div>
             <div class="details-field">
               <label>Email</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $email ?></span>
             </div>
             <div class="details-field">
               <label>Allergies</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $allergies ?></span>
             </div>
             <div class="details-field" hidden>
-              
+
             </div>
             <div class="details-field">
               <label>Address 1</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $addressOne ?></span>
             </div>
             <div class="details-field">
               <label>Address 2</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $addressTwo ?></span>
             </div>
             <div class="details-field">
               <label>Postal Code</label>
-              <span class="label-result"></span>
+              <span class="label-result"><?= $postal ?></span>
             </div>
           </div>
         </div>
@@ -222,26 +218,35 @@ if (mysqli_num_rows($conn->query($sql)) > 0){
           <div class="fields">
             <div class="details-field">
               <label>Emergency Contact Name</label>
-              <span class="label-result"></span>            </div>
+              <span class="label-result"><?= $emergencyName ?></span>
+            </div>
 
             <div class="details-field">
               <label>Emergency Contact Number</label>
-              <span class="label-result"></span>            </div>
+              <span class="label-result"><?= $emergencyContact ?></span>
+            </div>
 
             <div class="details-field">
               <label>Relationship with Contact</label>
-              <span class="label-result"></span>            </div>
+              <span class="label-result"><?= $emergencyRelate ?></span>
+            </div>
           </div>
         </div>
         <div class="next-appointment-container">
           <span class="title">Next Appointment</span>
           <div class="box-appointment">
-            <label>Service: </label>
-            <span class="label-result"></span>   
-            <label>Doctor</label>
-            <span class="label-result"></span>   
-            <label>Timeslot: </label>
-            <span class="label-result"></span>   
+            <div class="details-field">
+              <label>Service: </label>
+              <span class="label-result">Data</span>
+            </div>
+            <div class="details-field">
+              <label>Doctor: </label>
+              <span class="label-result">Data</span>
+            </div>
+            <div class="details-field">
+              <label>Timeslot: </label>
+              <span class="label-result">Data</span>
+            </div>
           </div>
         </div>
         <button class="edit-appointment-btn">Edit Appointment</button>
@@ -293,4 +298,5 @@ if (mysqli_num_rows($conn->query($sql)) > 0){
 <?php
 CloseCon($conn);
 ?>
+
 </html>
