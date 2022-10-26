@@ -2,10 +2,12 @@
 <html>
 
 <?php
+//Database Connection
 include("../assets/php/db_connection.php");
 $conn = OpenCon();
 session_start();
 
+//Header Functions
 if (isset($_GET['isLogin'])) {
   openLoginForm();
 }
@@ -31,6 +33,26 @@ function bookAppointment()
   }
 }
 
+/*For Personal Profile*/
+//Declare required variables 
+  $fullname = 
+  $dob = 
+  $nric = 
+  $mobileNumber =
+  $gender = 
+  $occupation = 
+  $email = 
+  $allergies = 
+  $addressOne = 
+  $addressTwo = 
+  $postal = 
+  $emergencyName = 
+  $emergencyContact = 
+  $emergencyRelate = "";
+
+  $profileArray = array();
+  
+
 if (isset($_GET['logout'])) {
   session_destroy();
   header("Location: ../index.php");
@@ -41,7 +63,26 @@ echo "$user";
 
 //Get Personal Profile 
 $sql = "SELECT * from user_profile WHERE user_name = '$user'";
-$results = mysqli_fetch_assoc($conn->query($sql));
+if (mysqli_num_rows($conn->query($sql)) > 0){
+  while ($row = $conn->query($sql)->fetch_assoc()){
+    $fullname = $row['full_name'];
+    $dob = $row['D_O_B'];
+    $nric = $row['nric'];
+    $mobileNumber = $row['nric'];
+    $gender = $row['gender'];
+    $occupation = $row['occupation'];
+    $email = $row['email'];
+    $allergies = $row['allergies'];
+    $addressOne = $row['address_1'];
+    $addressTwo = $row['address_2'];
+    $postal = $row['postal_code'];
+    $emergencyName = $row['emergency_contact_name'];
+    $emergencyContact = $row['emergency_contact_no'];
+    $emergencyRelate = $row['emergency_contact_relation'];
+  }
+}
+
+
 ?>
 
 <head>
@@ -124,12 +165,12 @@ $results = mysqli_fetch_assoc($conn->query($sql));
         <button type="submit" class="logout-btn">Logout</button>
       </a>
       <div class="profile-container">
-        <div class="personal-details-container">
+        <div class="personal-details-container">s
         <span class="title">Personal Details</span>
           <div class="fields">
             <div class="details-field">
               <label>Full Name</label>
-              <span class="label-result"><?$results["full_name"]?></span>
+              <span class="label-result"><?$fullname?></span>
             </div>
             <div class="details-field">
               <label>Date of Birth</label>
