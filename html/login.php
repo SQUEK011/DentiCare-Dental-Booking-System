@@ -16,6 +16,59 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
+<?php
+include("../assets/php/db_connection.php");
+$conn = OpenCon();
+session_start();
+
+if (isset($_GET['isLogin'])) {
+    openLoginForm();
+}
+
+if (isset($_GET['isUser'])) {
+    bookAppointment();
+}
+function openLoginForm()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/login-test.php");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+function bookAppointment()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/select_service.html");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+if (isset($_POST['login'])) {
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+
+    $sql = "SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
+
+    $result = mysqli_num_rows($conn->query($sql));
+
+    if ($result > 0)  // username is  set to "Ank"  and Password   
+    {                                   // is 1234 by default     
+
+        $_SESSION['use'] = $user;
+
+        echo '<script type="text/javascript"> alert("Login Successful!");</script>';
+        echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
+
+    } else {
+        echo "invalid UserName or Password";
+    }
+}
+
+?>
+
 <body>
     <!--NAV Component-->
     <header class="header">
@@ -39,12 +92,12 @@
         </div>
         <div class="header-bottom" data-header>
             <div class="container">
-                <a href="../index.html" class="logo">DentiCare</a>
+                <a href="../index.php" class="logo">DentiCare</a>
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
 
                         <li>
-                            <a href="../index.html" class="navbar-link" data-nav-link>Home</a>
+                            <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
 
                         <li>
@@ -56,15 +109,15 @@
                         </li>
 
                         <li>
-                            <button class="navbar-link" onclick="openForm()" data-nav-link>
+                            <a href="?isLogin=true" class="navbar-link" data-nav-link>
                                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
-                            </button>
+                            </a>
                         </li>
 
                     </ul>
 
                 </nav>
-                <a href="#" class="btn">Book appointment</a>
+                <a href="?isUser=true" class="btn">Book appointment</a>
                 <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
                     <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
                     <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -72,40 +125,41 @@
             </div>
         </div>
     </header>
+    <!-- Login Form-->
+    <div class="form-section">
+        <!--div class="bg-modal" id="myForm"-->
+        <div class="container-form-login">
+            <header>Sign In to Book/Manage Appointments
 
-    <!-- Banner -->
-    <section class="services" id="services">
-        <div class="container">
-            <h1 class="heading"> our services</h1>
-            <form action="#">
-                <div class="box-container">
-
-                    <div class="box" name="online-schedule" onclick="submit()">
-                        <img src="../assets/img/images/services-1.webp" alt="">
-                        <h3>online schedule</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                    </div>
-
-                    <div class="box" name="cosmetic-feeling" onclick="submit()">
-                        <img src="../assets/img/images/services-2.webp" alt="">
-                        <h3>cosmetic feeling</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                    </div>
-
-                    <div class="box" name="oral-hygiene" onclick="submit()">
-                        <img src="../assets/img/images/services-3.webp" alt="">
-                        <h3>oral hygiene experts</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                    </div>
+            </header>
+            <form action="" method="post">
+                <div class="input-field">
+                    <label>Username: </label>
+                    <input type="text" name="user" size="40" placeholder="Enter your email" required>
                 </div>
+                <div class="input-field">
+                    <label>Password: </label>
+                    <input type="password" name="pass" size="40" placeholder="Enter your password" required>
+                </div>
+                <a href="#" class="text">Forget Password?</a><br>
+                <button class="submitBtn" name="login">
+                    <span class="btnText">Sign In</span>
+                </button>
             </form>
+            <div class="login-signup">
+                <span class="text">Not a member?
+                    <a href="../html/registration.php" class="text signup-link">Sign Up Now</a>
+                </span>
+            </div>
         </div>
-    </section>
-    <!-- -->
+        <!--/div-->
+    </div>
+
+
 </body>
 <footer class="footer">
 
-    <div class="footer-top section">
+    <div class="footer-top">
         <div class="container">
             <h1 class="text-center">DentiCare Dental Clinic</h1>
             <div class="box-container">
@@ -124,18 +178,14 @@
                 <div class="box-message">
                     <h3>Send Us a Message</h3>
                     <form action="#" method="get">
-                        <input type="text" class="input-text-name" placeholder="Enter your name">
-                        <input type="email" class="input-text-email" placeholder="Enter your name">
-                        <input type="textarea" class="input-text" placeholder="Enter your message here" />
+                        <input type="text" class="input-text-name" name="contactName" size="40" placeholder="Enter your name" />
+                        <input type="email" class="input-text-email" size="40" placeholder="Enter your email">
+                        <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'></textarea>
                         <input type="submit">
                     </form>
                 </div>
             </div>
-
-
-
         </div>
-
     </div>
     </div>
 
@@ -149,5 +199,8 @@
     <!--Javascript files-->
     <script src="../assets/js/scripts.js" defer></script>
 </footer>
+<?php
+CloseCon($conn);
+?>
 
 </html>

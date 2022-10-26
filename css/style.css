@@ -708,33 +708,12 @@ textarea.contact-input {
 
 /*Registration Form*/
 .form-section {
-  box-sizing: border-box;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.bg-modal {
-
-  display: none;
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 .container-form-registration {
@@ -756,11 +735,6 @@ textarea.contact-input {
   color: #333;
 }
 
-.container-form-registration header img,
-.container-form-login header img {
-  float: right;
-}
-
 .container-form-registration header::before {
   content: "";
   position: absolute;
@@ -777,11 +751,10 @@ textarea.contact-input {
   margin-top: 16px;
   min-height: 490px;
   background-color: #fff;
-  overflow: hidden;
 }
 
 .container-form-registration form .form {
-  position: absolute;
+  
   background-color: #fff;
   transition: 0.3s ease;
 }
@@ -884,7 +857,12 @@ form button:hover {
   padding: 10px;
 }
 
-.container-form-login header img {
+.container-form-login .input-field label{
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.container-form-login header img{
   float: right;
 }
 
@@ -904,13 +882,27 @@ form button:hover {
 }
 
 .login-signup {
-  margin-top: 30px;
+  margin: 20px 0px 10px;
   text-align: center;
 }
 
+.container-form-login .submitBtn {
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0 10px;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
 /*----Choose Services-----*/
-.services {
-  background: #f1f1f1;
+.services{
+  background: linear-gradient(135deg, #71b7e6, var(--royal-blue-light));
   padding: 20px 0px 40px;
 }
 
@@ -965,6 +957,90 @@ form button:hover {
   font-size: 1.5rem;
   color: #666;
   line-height: 2;
+}
+
+/*Show Profile*/
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.profile header{
+  font-size: 2rem;
+  color: var(--black);
+  font-weight: bolder;
+}
+
+.profile .profile-container{
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 30px;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile .profile-container .title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #333;
+}
+
+.profile .profile-container .fields {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile .fields .details-field {
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 4px 0;
+}
+
+.profile .next-appointment-container .box-appointment{
+  background-color: antiquewhite;
+  max-width: 400px;
+}
+
+.profile .edit-appointment-btn,
+.profile .logout-btn {
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+  margin: 25px 0 10px;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+
+.details-field label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.box-appointment .details-field {
+  margin-bottom: 5px;
+}
+
+.box-appointment label {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /*-----Show Doctors------*/
