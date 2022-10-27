@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS doctors(
 );
 
 CREATE TABLE IF NOT EXISTS appointments(
+    appt_no INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     appt_date date,
     appt_time time,
     doctor_name VARCHAR(30), 

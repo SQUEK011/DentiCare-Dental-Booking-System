@@ -1044,8 +1044,60 @@ form button:hover {
 }
 
 /*-----Show Doctors------*/
+.team .container .show-doctor-container{
+  display: inline-flex;
+  flex-direction: row;
+  margin: 4px 0px;
+}
+  .doctors-profile {
+    border-style: solid;
+    margin: 0px 15px;
+    min-height: 120wh;
+  }
+  .doctors-profile img{
+    width: 60%;
+  margin: auto;
+  display: block;
+  }
+  .doctors-profile .content{
+    text-align: center;
+  }
 
+  /*Doctors Profile*/
+.doctorsfull-profile-container .row:after,
+.btns-container .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
+.doctorsfull-profile-container .column,
+.btns-container .column{
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.doctorsfull-profile-container .column .text-container header{
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.doctorsfull-profile-container .column .text-container .services-provided-container{
+  margin-top: 10px;
+  padding: 10px 0px;
+}
+
+.doctorsfull-profile-container .column .text-container .title {
+  background-color: var(--carolina-blue);
+  font-weight: bold;
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.doctorsfull-profile-container .column .text-container ul{
+  padding: 20px;
+}
 
 /*-----Media Queries------*/
 /**
