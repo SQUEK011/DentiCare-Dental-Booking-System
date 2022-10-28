@@ -33,30 +33,10 @@ function bookAppointment()
     }
 }
 
-
-//SQL Query
-//Declare variables 
-$doctorName =
-    $service1 = $service2 = $service3 =
-    $aboutDoc = $imageUrl = "";
-
-$selectedDoc = $_SESSION["doctor_selected"];
-$sql = "SELECT * from doctors where doctor_name = '$selectedDoc'";
-$results = $conn->query($sql);
-
-if (mysqli_num_rows($results) > 0) {
-    while ($row = $results->fetch_assoc()) {
-        $doctorName = $row['doctor_name'];
-        $service1 = $row['service_1'];
-        $service2 = $row['service_2'];
-        $service3 = $row['service_3'];
-        $aboutDoc = $row['about_doctor'];
-        $imageUrl = $row['image_url'];
-    }
-}
-
-mysqli_free_result($results);
-
+//Get data from session 
+//$currentUser = $_SESSION['use'];
+$doctorSelected = $_SESSION["doctor_selected"];
+$serviceSelected = $_SESSION["service_selected"];
 ?>
 
 <head>
@@ -114,7 +94,7 @@ mysqli_free_result($results);
                         </li>
 
                         <li>
-                            <a href="doctors_services.php?isLogin=true" class="navbar-link" data-nav-link>
+                            <a href="select_appt.php?isLogin=true" class="navbar-link" data-nav-link>
                                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
                             </a>
                         </li>
@@ -122,7 +102,7 @@ mysqli_free_result($results);
                     </ul>
 
                 </nav>
-                <a href="doctors_services.php?isUser=true" class="btn">Book appointment</a>
+                <a href="select_appt.php?isUser=true" class="btn">Book appointment</a>
                 <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
                     <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
                     <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -131,49 +111,51 @@ mysqli_free_result($results);
         </div>
     </header>
 
-    <!-- Doctors Profile -->
-    <section class="doctors-full-profile" id="doctors-full-profile">
+    <!-- Table of Available Appointments -->
+    <section class="available_appointments" id="available_appointments">
         <div class="container">
-            <div class="doctorsfull-profile-container">
-                <div class="row">
-                    <div class="column">
-                        <div class="dp-container">
-                            <img src="<?= $imageUrl ?>" alt="">
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="text-container">
-                            <header><?= $doctorName ?></header>
-                            <div class="services-provided-container">
-                                <span class="title">Services Provided</span>
-                                <ul>
-                                    <?php echo ($service1 != "") ? "<li>$service1</li>" : ""; ?>
-                                    <?php echo ($service2 != "") ? "<li>$service2</li>" : ""; ?>
-                                    <?php echo ($service3 != "") ? "<li>$service3</li>" : ""; ?>
-                                </ul>
-                            </div>
-                            <div class="about-doctor-container">
-                                <span class="title">About Doctor</span>
-                                <p><?= $aboutDoc ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <h1 class="heading text-center"> Available Appointments</h1>
+        <div class="show-appointments-container">
+            <table border="1" class="appointment-table">
+            <tr>
+                <th>Appointment Date</th>
+                <th>Appointment Timeslot</th>
+                <th></th>
+            </tr>
+            <?php
+                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND service_selected='$serviceSelected'";
+                $results = $conn->query($sql);
+
+                if (mysqli_num_rows($results) > 0){
+                    while ($row = $results->fetch_assoc()){
+                        echo "
+                            <tr>
+                                <td>".$row['appt_date']."</td>
+                                <td>".$row['appt_time']."</td>
+                                <td><input type='radio' name='select_appt' value='".$row['appt_no']."'></td>
+                            </tr>
+                        ";
+                    }
+                }
+
+                mysqli_free_result($results);
+            ?>
+            </table>
             <div class=btns-container>
                 <div class="row">
                     <div class="column">
-                        <a href="../html/doctors_services.php" style="float:right;">
+                        <a href="#" style="float:right;">
                             <button type="submit" class="back-btn">Back</button>
                         </a>
                     </div>
                     <div class="column">
-                        <a href="../html/select_appt.php" style="float:left;">
+                        <a href="#" style="float:left;">
                             <button type="submit" class="confirm-btn">Confirm</button>
                         </a>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- -->

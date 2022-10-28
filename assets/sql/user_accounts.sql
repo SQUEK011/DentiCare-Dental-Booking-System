@@ -7,9 +7,9 @@
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+/*SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+00:00";*/
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `user_accounts`
 --
 
-CREATE TABLE `user_accounts` (
+/*CREATE TABLE `user_accounts` (
   `user_name` varchar(30) NOT NULL,
   `pass_word` varchar(30) DEFAULT NULL,
   `admin_rights` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;*/
 
 --
 -- Dumping data for table `user_accounts`
@@ -49,7 +49,7 @@ INSERT INTO `user_accounts` (`user_name`, `pass_word`, `admin_rights`) VALUES
 --
 -- Indexes for table `user_accounts`
 --
-ALTER TABLE `user_accounts`
+/*ALTER TABLE `user_accounts`
   ADD PRIMARY KEY (`user_name`);
 COMMIT;
 
