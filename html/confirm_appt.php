@@ -33,6 +33,85 @@ function bookAppointment()
     }
 }
 
+if (isset($_GET['select_appt'])){
+    $appt_no = $_GET['select_appt'];
+    $_SESSION['appt_no'] = $appt_no;
+}
+
+$sql = "SELECT appt_date, appt_time, doctor_name, dental_service from appointments where appt_no = '".$_SESSION['appt_no']."'";
+$results = $conn->query($sql);
+
+$appt_time =$appt_date=$doctor_name=$service="";
+
+if (mysqli_num_rows($results) > 0){
+    while ($row = $results->fetch_assoc()){
+        $appt_time = $row['appt_time'];
+        $appt_date = $row['appt_date'];
+        $doctor_name = $row['doctor_name'];
+        $service = $row['dental_service'];
+    }
+}
+
+if(isset($_GET['isConfirm'])){
+    $sql = "UPDATE appointments SET user_name = '".$_SESSION['use']."' where appt_no = ".$_SESSION['appt_no'];
+
+    if (mysqli_query($conn,$sql)){
+        popUpScreen($appt_time,$appt_date,$doctor_name,$service);
+    }
+    else {
+        echo "Failed to register: " . mysqli_error($conn) . ".Please try again.";
+    }
+}
+
+function popUpScreen($appt_time,$appt_date,$doctor_name,$service){
+    echo "
+    <div id='myModal' class='modal'>
+    
+      <div class='modal-content'>
+        <div id='loader'></div>
+        <div id='myDiv' class='animate-bottom'>
+            <div class='modal-text'>
+                <h2>Tada!</h2>
+                <p>Congratulations you have successfully booked an appointment! A confirmation mail has been sent to your Email Address provided by you.</p>
+            </div>
+            <div class='next-appointment-container'>
+                <div class='box-appointment'>
+                    <div class='details-field'>
+                    <label>Service: </label>
+                    <span class='label-result'>$service</span>
+                    </div>
+                    <div class='details-field'>
+                    <label>Doctor: </label>
+                    <span class='label-result'>$doctor_name</span>
+                    </div>
+                    <div class='details-field'>
+                    <label>Timeslot: </label>
+                    <span class='label-result'>$appt_date, $appt_time</span>
+                    </div>
+                </div>
+            </div>
+            <div class='btns-container'>
+                <a href='../index.php'>
+                    <button type='button' class='return-btn'>Return to Home Page</button>
+                </a>
+            </div>
+        </div>
+        
+        </div>
+    
+    </div>";
+
+    echo "<script type'text/javascript'>
+    
+        var ele = document.getElementById('loader');
+        window.setTimeout(function(){
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('myDiv').style.display = 'block';
+        }, 4000);
+    
+    </script>";
+}
+
 ?>
 
 <head>
@@ -108,7 +187,32 @@ function bookAppointment()
     </header>
 
     <!-- Confirm Appoint Section -->
-    
+    <section class="confirm-appointment-booking">
+        <div class="container">
+        <h1 class="heading text-center"> Available Appointments</h1>
+        <div class="confirm-appointment-container">
+            <form action="" method="post">
+                <span class="title">Service: </span><?=$service?>
+                <span class="title">Doctor: </span><?=$doctor_name?>
+                <span class="title">Timeslot: </span><?=$appt_date?>, <?=$appt_time?>
+                <div class=btns-container>
+                <div class="row">
+                    <div class="column">
+                        <a href="select_appt.php" style="float:right;">
+                            <button type="button" class="back-btn">Back</button>
+                        </a>
+                    </div>
+                    <div class="column">
+                        <a href="confirm_appt.php?isConfirm=true" style="float:left;">
+                            <button type="button" class="confirm-btn">Confirm</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </section>
     <!-- -->
 </body>
 <footer class="footer">

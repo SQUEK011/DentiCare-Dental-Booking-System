@@ -1008,7 +1008,7 @@ form button:hover {
   margin: 4px 0;
 }
 
-.profile .next-appointment-container .box-appointment{
+.next-appointment-container .box-appointment{
   background-color: antiquewhite;
   max-width: 400px;
 }
@@ -1136,6 +1136,132 @@ table input[type=radio] {
   border: 0px;
   width: 100%;
   height: 2em;
+}
+
+.confirm-appointment-container {
+  margin: auto;
+  display: block;
+}
+
+.confirm-appointment-container .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/*Loading Screen*/
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+display: none;
+  text-align: center;
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-text h2 {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+}
+
+.modal-text p{
+  font-size: var(--fs-6);
+}
+
+#myDiv .btns-container {
+  margin-top: 30px;
+}
+
+#myDiv .next-appointment-container {
+  margin-top: 20px;
+  font-size: var(--fs-7);
+  text-align: center;
+}
+
+#myDiv .next-appointment-container .details-field label {
+  font-weight: 200;
 }
 
 /*-----Media Queries------*/

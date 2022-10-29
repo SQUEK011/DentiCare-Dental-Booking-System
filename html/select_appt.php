@@ -33,6 +33,8 @@ function bookAppointment()
     }
 }
 
+
+
 //Get data from session 
 //$currentUser = $_SESSION['use'];
 $doctorSelected = $_SESSION["doctor_selected"];
@@ -116,6 +118,7 @@ $serviceSelected = $_SESSION["service_selected"];
         <div class="container">
         <h1 class="heading text-center"> Available Appointments</h1>
         <div class="show-appointments-container">
+            <form action="confirm_appt.php" method="get">
             <table border="1" class="appointment-table">
             <tr>
                 <th>Appointment Date</th>
@@ -123,7 +126,7 @@ $serviceSelected = $_SESSION["service_selected"];
                 <th></th>
             </tr>
             <?php
-                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND service_selected='$serviceSelected'";
+                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected'";
                 $results = $conn->query($sql);
 
                 if (mysqli_num_rows($results) > 0){
@@ -144,17 +147,18 @@ $serviceSelected = $_SESSION["service_selected"];
             <div class=btns-container>
                 <div class="row">
                     <div class="column">
-                        <a href="#" style="float:right;">
-                            <button type="submit" class="back-btn">Back</button>
+                        <a href="../html/select_doctor.php" style="float:right;">
+                            <button type="button" class="back-btn">Back</button>
                         </a>
                     </div>
                     <div class="column">
-                        <a href="#" style="float:left;">
-                            <button type="submit" class="confirm-btn">Confirm</button>
-                        </a>
+                        
+                            <button type="submit" class="confirm-btn" style="float:left;">Confirm</button>
+                        
                     </div>
                 </div>
             </div>
+            </form>
         </div>
         </div>
     </section>
