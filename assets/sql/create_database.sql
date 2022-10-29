@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS user_profile(
     user_name VARCHAR(30),
     full_name VARCHAR(30),
     nric VARCHAR(8),
-    nationality VARCHAR(10),
     D_O_B date,
     gender VARCHAR(10),
     occupation VARCHAR(20),
     mobile_no VARCHAR(8),
     email VARCHAR(50),
+    allergies VARCHAR(255),
     address_1 VARCHAR(50),
     address_2 VARCHAR(50),
     postal_code VARCHAR(6),
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS doctors(
 );
 
 CREATE TABLE IF NOT EXISTS appointments(
+    appt_no INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     appt_date date,
     appt_time time,
     doctor_name VARCHAR(30), 

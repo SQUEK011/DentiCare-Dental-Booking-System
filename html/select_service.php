@@ -2,7 +2,6 @@
 <html>
 
 <?php
-//Database Connection
 session_start();
 
 //Header Functions
@@ -12,11 +11,6 @@ if (isset($_GET['isLogin'])) {
 
 if (isset($_GET['isUser'])) {
     bookAppointment();
-}
-
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header("Location: ../index.php");
 }
 
 function openLoginForm()
@@ -37,8 +31,13 @@ function bookAppointment()
     }
 }
 
-if (isset($POST)) {
-    $_SESSION["service_selected"] = $_GET['select_service'];
+if (isset($_GET['selectService'])) {
+    selectService();
+}
+
+function selectService(){
+    $_SESSION["service_selected"] = $_GET['selectService'];
+    header("Location: ../html/doctors_services.php");
 }
 ?>
 
@@ -118,28 +117,34 @@ if (isset($POST)) {
     <section class="services" id="services">
         <div class="container">
             <h1 class="heading"> our services</h1>
-            <form action="" method="POST">
+            
                 <div class="box-container">
 
-                    <div class="box" name="online-schedule" onclick="submit()">
-                        <img src="../assets/img/images/services-1.webp" alt="">
-                        <h3>online schedule</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
-                    </div>
-
-                    <div class="box" name="cosmetic-feeling" onclick="submit()">
+                    <a href="select_service.php?selectService=General Dentistry">
+                        <div class="box" name="General Dentistry">
+                            <img src="../assets/img/images/services-1.webp" alt="">
+                            <h3>General Dentistry</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="select_service.php?selectService=Aesthetic Dentistry">
+                    <div href="select_service.php?selectService=true" class="box">
                         <img src="../assets/img/images/services-2.webp" alt="">
-                        <h3>cosmetic feeling</h3>
+                        <h3>Aesthetic Dentistry</h3>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
                     </div>
+                    </a>
 
-                    <div class="box" name="oral-hygiene" onclick="submit()">
+                    <a href="select_service.php?selectService=Extractions and Minor Surgery">
+                    <div href="select_service.php?selectService=true" class="box">
                         <img src="../assets/img/images/services-3.webp" alt="">
-                        <h3>oral hygiene experts</h3>
+                        <h3>Extractions and Minor Surgery</h3>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis in excepturi.</p>
                     </div>
+                    </a>
                 </div>
-            </form>
+            
         </div>
     </section>
     <!-- -->

@@ -66,22 +66,7 @@ window.addEventListener("scroll", function () {
 });
 /*----------*/
 
-/*-----Validation-----*/
+/*validation*/
 
-/*----Registration/Login Form-----*/
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+/*Modal & Loader*/
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-
-function openRegistrationForm(){
-  document.getElementById("registration-form").style.display = "block";
-  document.getElementById("myForm").style.display = "none";
-}
-
-function closeRegistrationForm(){
-  document.getElementById("registration-form").style.display = "none";
-}
