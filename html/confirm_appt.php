@@ -57,6 +57,7 @@ if(isset($_GET['isConfirm'])){
 
     if (mysqli_query($conn,$sql)){
         popUpScreen($appt_time,$appt_date,$doctor_name,$service);
+        sendEmail($appt_time,$appt_date,$doctor_name,$service);
     }
     else {
         echo "Failed to register: " . mysqli_error($conn) . ".Please try again.";
@@ -67,32 +68,32 @@ function popUpScreen($appt_time,$appt_date,$doctor_name,$service){
     echo "
     <div id='myModal' class='modal'>
     
-      <div class='modal-content'>
         <div id='loader'></div>
         <div id='myDiv' class='animate-bottom'>
+        <div class='modal-content'>
             <div class='modal-text'>
-                <h2>Tada!</h2>
+                <h2>Booking Sucess!</h2>
                 <p>Congratulations you have successfully booked an appointment! A confirmation mail has been sent to your Email Address provided by you.</p>
             </div>
-            <div class='next-appointment-container'>
+            <div class='confirm-appointment-container'>
                 <div class='box-appointment'>
                     <div class='details-field'>
-                    <label>Service: </label>
-                    <span class='label-result'>$service</span>
+                        <label>Service: </label>
+                        <span class='label-result'>$service</span>
                     </div>
                     <div class='details-field'>
-                    <label>Doctor: </label>
-                    <span class='label-result'>$doctor_name</span>
+                        <label>Doctor: </label>
+                        <span class='label-result'>$doctor_name</span>
                     </div>
                     <div class='details-field'>
-                    <label>Timeslot: </label>
-                    <span class='label-result'>$appt_date, $appt_time</span>
+                        <label>Timeslot: </label>
+                        <span class='label-result'>$appt_date, $appt_time</span>
                     </div>
                 </div>
             </div>
             <div class='btns-container'>
                 <a href='../index.php'>
-                    <button type='button' class='return-btn'>Return to Home Page</button>
+                    <button type='button' class='return-btn'>Return Home</button>
                 </a>
             </div>
         </div>
@@ -110,6 +111,44 @@ function popUpScreen($appt_time,$appt_date,$doctor_name,$service){
         }, 4000);
     
     </script>";
+}
+
+function sendEmail($appt_time,$appt_date,$doctor_name,$service){
+    $to      = 'f32ee@localhost';
+    $subject = 'Booking Success!';
+    $message = "<div id='myModal' class='modal'>
+    
+    <html><body>
+              <h2>Booking Sucess!</h2>
+              <p>Congratulations you have successfully booked an appointment! Please login if you wish to change this appointment.</p>
+          <div class='confirm-appointment-container'>
+              <div class='box-appointment'>
+                  <div class='details-field'>
+                  <label>Service: </label>
+                  <span class='label-result'>$service</span>
+                  </div>
+                  <div class='details-field'>
+                  <label>Doctor: </label>
+                  <span class='label-result'>$doctor_name</span>
+                  </div>
+                  <div class='details-field'>
+                  <label>Timeslot: </label>
+                  <span class='label-result'>$appt_date, $appt_time</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      </body>
+  
+  </html>";
+    $headers = 'From: f32ee@localhost' . "\r\n" .
+        'Reply-To: f32ee@localhost' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    $headers .= "MIME-Version: 1.0" . "\r\n"; 
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
+    
+    mail($to, $subject, $message, $headers,'-denticare@localhost');
 }
 
 ?>
@@ -187,14 +226,16 @@ function popUpScreen($appt_time,$appt_date,$doctor_name,$service){
     </header>
 
     <!-- Confirm Appoint Section -->
-    <section class="confirm-appointment-booking">
-        <div class="container">
-        <h1 class="heading text-center"> Available Appointments</h1>
-        <div class="confirm-appointment-container">
+    <section class="confirm-appointment-booking background">
+            <div class="surround-container"> 
+                <h1 class="heading text-center"> Available Appointments</h1>
+                <div class="confirm-appointment-container text-center">
             <form action="" method="post">
-                <span class="title">Service: </span><?=$service?>
-                <span class="title">Doctor: </span><?=$doctor_name?>
-                <span class="title">Timeslot: </span><?=$appt_date?>, <?=$appt_time?>
+                <div class="box-appointment">
+                    <label>Service: </label><span><?=$service?></span><br>
+                    <label>Doctor: </label><span><?=$doctor_name?></span><br>
+                    <label>Timeslot: </label><span><?=$appt_date?>, <?=$appt_time?></span>
+                </div>
                 <div class=btns-container>
                 <div class="row">
                     <div class="column">
@@ -210,7 +251,10 @@ function popUpScreen($appt_time,$appt_date,$doctor_name,$service){
                 </div>
             </div>
             </form>
-        </div>
+        
+            </div>
+       
+        
         </div>
     </section>
     <!-- -->

@@ -234,22 +234,40 @@ mysqli_free_result($results);
         </div>
         <div class="next-appointment-container">
           <span class="title">Next Appointment</span>
-          <div class="box-appointment">
-            <div class="details-field">
-              <label>Service: </label>
-              <span class="label-result">Data</span>
-            </div>
-            <div class="details-field">
-              <label>Doctor: </label>
-              <span class="label-result">Data</span>
-            </div>
-            <div class="details-field">
-              <label>Timeslot: </label>
-              <span class="label-result">Data</span>
-            </div>
-          </div>
-        </div>
-        <button class="edit-appointment-btn">Edit Appointment</button>
+          <?php
+            $sql = "SELECT * from appointments where user_name ='".$_SESSION['use']."'";
+            $results = $conn->query($sql);
+            if (mysqli_num_rows($results) > 0){
+              while ($row = $results->fetch_assoc()) {
+                echo '<div class="box-appointment">
+                        <div class="details-field">
+                          <label>Service: </label>
+                          <span class="label-result">'.$row["dental_service"].'</span>
+                        </div>
+                        <div class="details-field">
+                          <label>Doctor: </label>
+                          <span class="label-result">'.$row["doctor_name"].'</span>
+                        </div>
+                        <div class="details-field">
+                          <label>Timeslot: </label>
+                          <span class="label-result">'.$row["appt_date"].','.$row["appt_time"].'</span>
+                        </div>
+                      </div>
+      
+                      <div class="btns-container">
+                          <a href="#">
+                            <button class="edit-appointment-btn">Edit Appointment</button>
+                          </a>
+                      </div>';
+            
+              }
+            }
+            else {
+              echo "<p>There is no appointments made</p>";
+            }
+            
+          ?>
+          
       </div>
     </div>
   </section>

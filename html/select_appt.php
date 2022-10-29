@@ -126,7 +126,7 @@ $serviceSelected = $_SESSION["service_selected"];
                 <th></th>
             </tr>
             <?php
-                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected'";
+                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected' AND user_name is null";
                 $results = $conn->query($sql);
 
                 if (mysqli_num_rows($results) > 0){
@@ -152,9 +152,7 @@ $serviceSelected = $_SESSION["service_selected"];
                         </a>
                     </div>
                     <div class="column">
-                        
-                            <button type="submit" class="confirm-btn" style="float:left;">Confirm</button>
-                        
+                        <button type="submit" class="confirm-btn" style="float:left;">Confirm</button>
                     </div>
                 </div>
             </div>

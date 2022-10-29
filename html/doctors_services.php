@@ -33,8 +33,6 @@ function bookAppointment()
   }
 }
 
-echo $_SESSION["service_selected"];
-
 if (isset($_GET['selectDoctor'])) {
   selectDoctor();
 }
@@ -118,8 +116,8 @@ function selectDoctor(){
   </header>
 
   <!-- Doctors Available -->
-  <section class="team" id="team">
-    <div class="container"> 
+  <section class="team background" id="team">
+    <div class="surround-container"> 
         <h1 class="heading text-center"> Available Doctors</h1>
 
         <div class="show-doctor-container">
@@ -148,8 +146,17 @@ function selectDoctor(){
 
             mysqli_free_result($results);
           ?>
-            
+          
         </div>
+        <div class=btns-container>
+                <div class="row">
+                    <div class="column">
+                        <a href="../html/select_service.php" style="float:right;">
+                            <button type="submit" class="back-btn">Back</button>
+                        </a>
+                    </div>
+                </div>
+          </div>
     </div>
 </section>
   <!-- -->

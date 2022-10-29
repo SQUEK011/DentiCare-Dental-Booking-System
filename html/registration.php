@@ -144,7 +144,7 @@ if (!mysqli_query($conn, $sql)) {
           </ul>
 
         </nav>
-        <a href="../html/select_service.html" class="btn">Book appointment</a>
+        <a href="../html/select_service.php" class="btn">Book appointment</a>
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
           <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
           <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -278,6 +278,7 @@ if (!mysqli_query($conn, $sql)) {
           <button class="submitBtn" name="register">
             <span class="btnText">Submit</span>
           </button>
+          <a href="login.php" style="color:blue;">Click here to Sign In</a>
         </div>
     </div>
     </form>

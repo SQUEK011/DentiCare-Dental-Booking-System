@@ -132,8 +132,8 @@ mysqli_free_result($results);
     </header>
 
     <!-- Doctors Profile -->
-    <section class="doctors-full-profile" id="doctors-full-profile">
-        <div class="container">
+    <section class="doctors-full-profile background" id="doctors-full-profile">
+        <div class="surround-container">
             <div class="doctorsfull-profile-container">
                 <div class="row">
                     <div class="column">
