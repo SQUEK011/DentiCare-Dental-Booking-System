@@ -37,6 +37,7 @@ if (isset($_GET['selectService'])) {
 
 function selectService(){
     $_SESSION["service_selected"] = $_GET['selectService'];
+    $_SESSION['fromDoctors'] = false;
     header("Location: ../html/doctors_services.php");
 }
 ?>
