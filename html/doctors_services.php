@@ -39,7 +39,7 @@ if (isset($_GET['selectDoctor'])) {
 
 function selectDoctor(){
   $_SESSION["doctor_selected"] = $_GET['selectDoctor'];
-    header("Location: ../html/doctor_profile.php");
+    header("Location: ../html/select_doctor.php");
 }
 ?>
 

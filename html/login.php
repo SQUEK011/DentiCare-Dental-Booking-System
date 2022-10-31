@@ -54,21 +54,13 @@ if (isset($_POST['login'])) {
 
     $result = mysqli_num_rows($conn->query($sql));
 
-    if ($result > 0)   
-    {
-        $sql = "SELECT admin_rights FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";   
-        $result = $conn ->query($sql)->fetch_row();
-        
+    if ($result > 0)  // username is  set to "Ank"  and Password   
+    {                                   // is 1234 by default     
+
         $_SESSION['use'] = $user;
 
-        if ($result[0] == 1){
-            echo '<script type="text/javascript"> window.open("../admin/dashboard.php.","_self");</script>';            //  On Successful Login redirects to admin.php
-        }
-        else {
-            echo '<script type="text/javascript"> alert("Login Successful!");</script>';
-            echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
-
-        }
+        echo '<script type="text/javascript"> alert("Login Successful!");</script>';
+        echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
 
     } else {
         echo "invalid UserName or Password";
@@ -149,7 +141,7 @@ if (isset($_POST['login'])) {
                     <label>Password: </label>
                     <input type="password" name="pass" size="40" placeholder="Enter your password" required>
                 </div>
-                <a href="../html/forget-password.php" class="text">Forget Password?</a><br>
+                <a href="#" class="text">Forget Password?</a><br>
                 <button class="submitBtn" name="login">
                     <span class="btnText">Sign In</span>
                 </button>
