@@ -82,7 +82,7 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+              <a href="html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
             </li>
 
             <li>
