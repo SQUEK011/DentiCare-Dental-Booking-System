@@ -46,30 +46,28 @@ function bookAppointment()
     }
 }
 
-if (isset($_POST['login'])) {
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
 
-    $sql = "SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
+$email = $_POST['email'];
+$randomPass = password_generate(13);
 
-    $result = mysqli_num_rows($conn->query($sql));
+function password_generate($chars) 
+{
+  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+  return substr(str_shuffle($data), 0, $chars);
+}
 
-    if ($result > 0) {
-        $sql = "SELECT admin_rights FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
-        $result = $conn->query($sql)->fetch_row();
-
-        $_SESSION['use'] = $user;
-
-        if ($result[0] == 1) {
-            echo '<script type="text/javascript"> window.open("../admin/dashboard.php.","_self");</script>';            //  On Successful Login redirects to admin.php
-        } else {
-            echo '<script type="text/javascript"> alert("Login Successful!");</script>';
-            echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
-
-        }
-    } else {
-        echo "invalid UserName or Password";
-    }
+function sendEmailtoUser($password, $email){
+    $emailTrim = trim($email,".com");
+    $to      = $emailTrim;
+    $subject = 'Temporary Password!';
+    $message = "<html><body>The temporary password is <strong>". $password .'</strong></body></html>';
+    $headers = 'From: denticare@localhost' . "\r\n" .
+        'Reply-To: ' .$emailTrim . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    $headers .= "MIME-Version: 1.0" . "\r\n"; 
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
+    
+    mail($to, $subject, $message, $headers,'-denticare@localhost');
 }
 
 ?>
@@ -84,13 +82,13 @@ if (isset($_POST['login'])) {
                         <div class="icon-mail">
                             <img src="../assets/img/icons/envelope-solid.svg" width="14px" height="14px">
                         </div>
-                        <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
+                        <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
                     </li>
                     <li class="contact-item">
                         <div class="icon-phone">
                             <img src="../assets/img/icons/phone-solid.svg" width="14px" height="14px">
                         </div>
-                        <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
+                        <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +99,7 @@ if (isset($_POST['login'])) {
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
 
-                        <li>
+                    <li>
                             <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
 
@@ -130,35 +128,36 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </header>
-    <!-- Login Form-->
-    <div class="form-section">
-        <!--div class="bg-modal" id="myForm"-->
-        <div class="container-form-login">
-            <header>Sign In to Book/Manage Appointments
+    <section class="forget-password background">
+        <div class="container">
+            <div class="surround-container">
+                <h1>Forget your Password?</h1>
+                <?php
+                    $sql = "UPDATE user_accounts SET pass_word = '$randomPass' where user_name IN (SELECT user_name FROM user_profile where email='$email');";
+                    if ($conn->query($sql)){
+                        echo "<span>An Email containing a temporary password has been sent. If you have not received this email, you might have input the wrong email.</span>";
+                        echo "<br><span>Return Home to Login.</span>";
+                        
+                        sendEmailtoUser($randomPass,$email);
+                        
+                        echo"<div class='btns-container'>
+                            <a href='login.php'>
+                                <button type='button' class='return-btn'>Return Home</button>
+                            </a>
+                        </div>";
 
-            </header>
-            <form action="" method="post">
-                <div class="input-field">
-                    <label>Username: </label>
-                    <input type="text" name="user" size="40" placeholder="Enter your email" required>
-                </div>
-                <div class="input-field">
-                    <label>Password: </label>
-                    <input type="password" name="pass" size="40" placeholder="Enter your password" required>
-                </div>
-                <a href="../html/forget-password.php" class="text">Forget Password?</a><br>
-                <button class="submitBtn" name="login">
-                    <span class="btnText">Sign In</span>
-                </button>
-            </form>
-            <div class="login-signup">
-                <span class="text">Not a member?
-                    <a href="../html/registration.php" class="text signup-link">Sign Up Now</a>
-                </span>
+                        
+                    }
+                    else {
+                        echo "<span>There was an error in the system. Please try again later. </span>";
+                    }
+                ?>
+                
+                
             </div>
         </div>
-        <!--/div-->
-    </div>
+
+    </section>
 
 
 </body>

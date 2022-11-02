@@ -75,10 +75,16 @@ while ($row = $results->fetch_assoc()) {
   $postal = $row['postal_code'];
   $emergencyName = $row['emergency_contact_name'];
   $emergencyContact = $row['emergency_contact_no'];
-  $emergencyRelate = $row['emergency_contact_relation'];;
+  $emergencyRelate = $row['emergency_contact_relation'];
 }
 
 mysqli_free_result($results);
+
+if (isset($_GET["edit"])) {
+  $_SESSION["fromEdit"] = true;
+  $_SESSION["appt_no"] = $_GET["edit"];
+  header("Location: ../html/select_appt.php");
+}
 ?>
 
 <head>
@@ -106,13 +112,13 @@ mysqli_free_result($results);
             <div class="icon-mail">
               <img src="../assets/img/icons/envelope-solid.svg" width="14px" height="14px">
             </div>
-            <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
+            <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
           </li>
           <li class="contact-item">
             <div class="icon-phone">
               <img src="../assets/img/icons/phone-solid.svg" width="14px" height="14px">
             </div>
-            <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
+            <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
           </li>
         </ul>
       </div>
@@ -128,11 +134,11 @@ mysqli_free_result($results);
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>About Us</a>
+              <a href="../html/about-us.php" class="navbar-link" data-nav-link>About Us</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+              <a href="../html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
             </li>
 
             <li>
@@ -235,41 +241,41 @@ mysqli_free_result($results);
         <div class="next-appointment-container">
           <span class="title">Next Appointment</span>
           <?php
-            $sql = "SELECT * from appointments where user_name ='".$_SESSION['use']."'";
-            $results = $conn->query($sql);
-            if (mysqli_num_rows($results) > 0){
-              while ($row = $results->fetch_assoc()) {
-                echo '<div class="box-appointment">
+          $sql = "SELECT * from appointments where user_name ='" . $_SESSION['use'] . "'";
+          $results = $conn->query($sql);
+          if (mysqli_num_rows($results) > 0) {
+            while ($row = $results->fetch_assoc()) {
+
+              echo '<div class="box-appointment">
                         <div class="details-field">
                           <label>Service: </label>
-                          <span class="label-result">'.$row["dental_service"].'</span>
+                          <span class="label-result">' . $row["dental_service"] . '</span>
                         </div>
                         <div class="details-field">
                           <label>Doctor: </label>
-                          <span class="label-result">'.$row["doctor_name"].'</span>
+                          <span class="label-result">' . $row["doctor_name"] . '</span>
                         </div>
                         <div class="details-field">
                           <label>Timeslot: </label>
-                          <span class="label-result">'.$row["appt_date"].','.$row["appt_time"].'</span>
+                          <span class="label-result">' . $row["appt_date"] . ',' . $row["appt_time"] . '</span>
                         </div>
-                      </div>
-      
-                      <div class="btns-container">
-                          <a href="#">
+                      </div>';
+
+
+              echo '<div class="btns-container">
+                          <a href="profile.php?edit=' . $row["appt_no"] . '">
                             <button class="edit-appointment-btn">Edit Appointment</button>
                           </a>
                       </div>';
-            
-              }
             }
-            else {
-              echo "<p>There is no appointments made</p>";
-            }
-            
+          } else {
+            echo "<p>There is no appointments made</p>";
+          }
+
           ?>
-          
+
+        </div>
       </div>
-    </div>
   </section>
 </body>
 <footer class="footer">
@@ -280,15 +286,15 @@ mysqli_free_result($results);
       <div class="box-container">
         <div class="box">
           <h3>Quick Links</h3>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Doctors</a>
+          <a href="../index.php">Home</a>
+          <a href="../html/about-us.php">About Us</a>
+          <a href="../html/doctors.php">Doctors</a>
         </div>
         <div class="box">
           <h3>Contact Us</h3>
-          <a href="#"> +123-456-7890 </a>
-          <a href="#"> shaikhanas@gmail.com </a>
-          <a href="#"> mumbai, india - 400104 </a>
+          <a href="tel:+6566224488"> +65 6622 4488 </a>
+          <a href="mailto:denticare@localhost.com"> denticare@localhost.com </a>
+          <a href="#"> 21 Lor 8 Toa Payoh, #01-200, Singapore 310019 </a>
         </div>
         <div class="box-message">
           <h3>Send Us a Message</h3>

@@ -46,31 +46,7 @@ function bookAppointment()
     }
 }
 
-if (isset($_POST['login'])) {
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
 
-    $sql = "SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
-
-    $result = mysqli_num_rows($conn->query($sql));
-
-    if ($result > 0) {
-        $sql = "SELECT admin_rights FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
-        $result = $conn->query($sql)->fetch_row();
-
-        $_SESSION['use'] = $user;
-
-        if ($result[0] == 1) {
-            echo '<script type="text/javascript"> window.open("../admin/dashboard.php.","_self");</script>';            //  On Successful Login redirects to admin.php
-        } else {
-            echo '<script type="text/javascript"> alert("Login Successful!");</script>';
-            echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
-
-        }
-    } else {
-        echo "invalid UserName or Password";
-    }
-}
 
 ?>
 
@@ -101,7 +77,7 @@ if (isset($_POST['login'])) {
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
 
-                        <li>
+                    <li>
                             <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
 
@@ -130,35 +106,35 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </header>
-    <!-- Login Form-->
-    <div class="form-section">
-        <!--div class="bg-modal" id="myForm"-->
-        <div class="container-form-login">
-            <header>Sign In to Book/Manage Appointments
-
-            </header>
-            <form action="" method="post">
-                <div class="input-field">
-                    <label>Username: </label>
-                    <input type="text" name="user" size="40" placeholder="Enter your email" required>
-                </div>
-                <div class="input-field">
-                    <label>Password: </label>
-                    <input type="password" name="pass" size="40" placeholder="Enter your password" required>
-                </div>
-                <a href="../html/forget-password.php" class="text">Forget Password?</a><br>
-                <button class="submitBtn" name="login">
-                    <span class="btnText">Sign In</span>
-                </button>
-            </form>
-            <div class="login-signup">
-                <span class="text">Not a member?
-                    <a href="../html/registration.php" class="text signup-link">Sign Up Now</a>
-                </span>
+    <section class="forget-password background">
+        <div class="container">
+            <div class="surround-container">
+                <h1>Forget your Password?</h1>
+                <span>Input Email used for your account</span>
+                <form action="forget-password-success.php" method="post" onsubmit="checkAllFields(event);">
+                    <div class="input-field">
+                        <label>Email: </label>
+                        <input type="emai" name="email" size="40" placeholder="Enter your email" onchange="validateEmail(email)" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Captcha: </label>
+                        <input type="text" class="input-captcha"  placeholder="Enter captcha" maxlength="6" spellcheck="false" required>
+                        <button type="button" class="check-btn">Check</button>
+                        <div class="status-text"></div>
+                    </div>
+                    <div class="captcha-area">
+                        <div class="captcha-img">
+                            <img src="../assets/img/images/captcha-bg.png">
+                            <span class="captcha"></span>
+                        </div>
+                        <button type="button" class="reload-btn">reload</button>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
             </div>
         </div>
-        <!--/div-->
-    </div>
+
+    </section>
 
 
 </body>

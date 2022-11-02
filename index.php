@@ -80,11 +80,11 @@
               </li>
 
               <li>
-                <a href="html/about-us.html" class="navbar-link" data-nav-link>About Us</a>
+                <a href="html/about-us.php" class="navbar-link" data-nav-link>About Us</a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+                <a href="html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
               </li>
 
               <li>
@@ -94,9 +94,7 @@
                     width="30px">
                 </a>
               </li>
-
             </ul>
-
           </nav>
           <a href="index.php?isUser=true" class="btn">Book appointment</a>
           <button class="nav-toggle-btn" aria-label="Toggle menu"
@@ -152,19 +150,19 @@
           <div class="box-container">
             <div class="box">
               <img src="assets/img/images/services-1.webp" alt="Online Schedule Icon">
-              <h3>online schedule</h3>
+              <h3>General Dentistry</h3>
               <p>Quick and easy booking of dental appointments.</br>5 minutes is all you need to check our dentists' availability and book your desired timeslots!</p>
             </div>
 
             <div class="box">
               <img src="assets/img/images/services-2.webp" alt="Cosmetic Filling Icon">
-              <h3>cosmetic filling</h3>
+              <h3>Aesthetic Dentistry</h3>
               <p>Improve your smile with cosmetic filling.</br> Cosmetic filling are less noticeable compared to traditional amalgam filling. and improve the appearance of your smile. </br>Your smile matters to us!  </p>
             </div>
 
             <div class="box">
               <img src="assets/img/images/services-3.webp" alt="Oral Hygiene Icon">
-              <h3>oral hygiene experts</h3>
+              <h3>Extractions and Minor Surgery</h3>
               <p>For healthy teeth and gums, proper dental hygiene is essential.</br>We will provide scaling and polishing services.</br>Let our dentists take care of your dental needs!</p>
             </div>
           </div>
@@ -242,6 +240,7 @@
           </div>
         </div>
       </div>
+    </div>
 
 
       <!--Contact Us-->
@@ -283,7 +282,7 @@
             </div>
           </div>
         </div>
-
+    </div>
 
 
 
@@ -296,15 +295,15 @@
       <div class="box-container">
         <div class="box">
           <h3>Quick Links</h3>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Doctors</a>
+          <a href="index.php">Home</a>
+          <a href="html/about-us.html">About Us</a>
+          <a href="html/doctors.php">Doctors</a>
         </div>
         <div class="box">
           <h3>Contact Us</h3>
-          <a href="#"> +123-456-7890 </a>
-          <a href="#"> shaikhanas@gmail.com </a>
-          <a href="#"> mumbai, india - 400104 </a>
+          <a href="tel:+6566224488"> +65 6622 4488 </a>
+          <a href="mailto:denticare@localhost.com"> denticare@localhost.com </a>
+          <a href="#"> 21 Lor 8 Toa Payoh, #01-200, Singapore 310019 </a>
         </div>
         <div class="box-message">
           <h3>Send Us a Message</h3>
