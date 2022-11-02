@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
+
+  <!--favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
+  <!--CSS-->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
 <?php
 include("../assets/php/db_connection.php");
 $conn = OpenCon();
@@ -40,24 +54,10 @@ if (isset($_GET['selectDoctor'])) {
 function selectDoctor()
 {
   $_SESSION["doctor_selected"] = $_GET['selectDoctor'];
+  $_SESSION["fromDoctors"] = true;
   header("Location: ../html/doctor_profile.php");
 }
 ?>
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DentiCare Dental Clinic - Meeting All Your Oral Health Care Needs</title>
-
-  <!--favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
-  <!--CSS-->
-  <link rel="stylesheet" href="../css/style.css">
-</head>
 
 <body>
   <!--NAV Component-->
@@ -99,7 +99,7 @@ function selectDoctor()
             </li>
 
             <li>
-              <a href="doctors_services.php?isLogin=true" class="navbar-link" data-nav-link>
+              <a href="#" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>
@@ -107,7 +107,7 @@ function selectDoctor()
           </ul>
 
         </nav>
-        <a href="doctors_services.php?isUser=true" class="btn">Book appointment</a>
+        <a href="doctors.php?isUser=true" class="btn">Book appointment</a>
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
           <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
           <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -119,19 +119,18 @@ function selectDoctor()
   <!-- Doctors Available -->
   <section class="team background" id="team">
     <div class="surround-container">
-      <h1 class="heading text-center"> Available Doctors</h1>
+      <h1 class="heading text-center"> Our Doctors</h1>
 
       <div class="show-doctor-container">
         <?php
-        $selectedService = $_SESSION["service_selected"];
-        $sql = "SELECT doctor_name, image_url from doctors where service_1 = '$selectedService' OR service_2 = '$selectedService' OR service_3 = '$selectedService'";
+        $sql = "SELECT doctor_name, image_url from doctors";
         $results = $conn->query($sql);
 
         if (mysqli_num_rows($results) > 0) {
           while ($row = $results->fetch_assoc()) {
 
             echo "
-                <a href='doctors_services.php?selectDoctor=" . $row['doctor_name'] . "'>
+                <a href='doctors.php?selectDoctor=" . $row['doctor_name'] . "'>
                 <div class='doctors-profile'>
                         <div class='profile-pic'>
                           <img src='" . $row['image_url'] . "' alt=''>
@@ -149,18 +148,8 @@ function selectDoctor()
         ?>
 
       </div>
-      <div class=btns-container>
-        <div class="row">
-          <div class="column">
-            <a href="../html/select_service.php" style="float:right;">
-              <button type="submit" class="back-btn">Back</button>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
-  <!-- -->
 </body>
 <footer class="footer">
 
@@ -203,8 +192,5 @@ function selectDoctor()
   <!--Javascript files-->
   <script src="../assets/js/scripts.js" defer></script>
 </footer>
-<?php
-CloseCon($conn);
-?>
 
 </html>

@@ -33,12 +33,24 @@ function bookAppointment()
     }
 }
 
+if ($_SESSION['fromEdit']) {
+    $appt_no = $_SESSION['appt_no'];
+    $sql = "SELECT * from appointments where appt_no = $appt_no";
+
+    if ($results = mysqli_query($conn, $sql)) {
+        while ($row = $results->fetch_assoc()) {
+            $doctorSelected = $row['doctor_name'];
+            $serviceSelected = $row["dental_service"];
+        }
+    }
+} else {
+    //Get data from session 
+    //$currentUser = $_SESSION['use'];
+    $doctorSelected = $_SESSION["doctor_selected"];
+    $serviceSelected = $_SESSION["service_selected"];
+}
 
 
-//Get data from session 
-//$currentUser = $_SESSION['use'];
-$doctorSelected = $_SESSION["doctor_selected"];
-$serviceSelected = $_SESSION["service_selected"];
 ?>
 
 <head>
@@ -66,13 +78,13 @@ $serviceSelected = $_SESSION["service_selected"];
                         <div class="icon-mail">
                             <img src="../assets/img/icons/envelope-solid.svg" width="14px" height="14px">
                         </div>
-                        <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
+                        <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
                     </li>
                     <li class="contact-item">
                         <div class="icon-phone">
                             <img src="../assets/img/icons/phone-solid.svg" width="14px" height="14px">
                         </div>
-                        <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
+                        <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
                     </li>
                 </ul>
             </div>
@@ -88,11 +100,11 @@ $serviceSelected = $_SESSION["service_selected"];
                         </li>
 
                         <li>
-                            <a href="#" class="navbar-link" data-nav-link>About Us</a>
+                            <a href="../html/about-us.php" class="navbar-link" data-nav-link>About Us</a>
                         </li>
 
                         <li>
-                            <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+                            <a href="../html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
                         </li>
 
                         <li>
@@ -116,48 +128,52 @@ $serviceSelected = $_SESSION["service_selected"];
     <!-- Table of Available Appointments -->
     <section class="available_appointments" id="available_appointments">
         <div class="container">
-        <h1 class="heading text-center"> Available Appointments</h1>
-        <div class="show-appointments-container">
-            <form action="confirm_appt.php" method="get">
-            <table border="1" class="appointment-table">
-            <tr>
-                <th>Appointment Date</th>
-                <th>Appointment Timeslot</th>
-                <th></th>
-            </tr>
-            <?php
-                $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected' AND user_name is null";
-                $results = $conn->query($sql);
+            <h1 class="heading text-center"> Available Appointments</h1>
+            <div class="show-appointments-container">
+                <form action="confirm_appt.php" method="get">
+                    <table border="1" class="appointment-table">
+                        <tr>
+                            <th>Appointment Date</th>
+                            <th>Appointment Timeslot</th>
+                            <th></th>
+                        </tr>
+                        <?php
+                        $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected' AND user_name is null";
+                        $results = $conn->query($sql);
 
-                if (mysqli_num_rows($results) > 0){
-                    while ($row = $results->fetch_assoc()){
-                        echo "
+                        if (mysqli_num_rows($results) > 0) {
+                            while ($row = $results->fetch_assoc()) {
+                                echo "
                             <tr>
-                                <td>".$row['appt_date']."</td>
-                                <td>".$row['appt_time']."</td>
-                                <td><input type='radio' name='select_appt' value='".$row['appt_no']."'></td>
+                                <td>" . $row['appt_date'] . "</td>
+                                <td>" . $row['appt_time'] . "</td>
+                                <td><input type='radio' name='select_appt' value='" . $row['appt_no'] . "'></td>
                             </tr>
                         ";
-                    }
-                }
+                            }
+                        }
 
-                mysqli_free_result($results);
-            ?>
-            </table>
-            <div class=btns-container>
-                <div class="row">
-                    <div class="column">
-                        <a href="../html/select_doctor.php" style="float:right;">
+                        mysqli_free_result($results);
+                        ?>
+                    </table>
+                    <div class=btns-container>
+                        <div class="row">
+                            <div class="column">
+                                <?php echo ($_SESSION['fromEdit']) ?
+                                    '<a href="../html/profile.php" style="float:right;">
                             <button type="button" class="back-btn">Back</button>
-                        </a>
+                        </a>' :
+                                    '<a href="../html/select_doctor.php" style="float:right;">
+                            <button type="button" class="back-btn">Back</button>
+                        </a>' ?>
+                            </div>
+                            <div class="column">
+                                <button type="submit" class="confirm-btn" style="float:left;">Confirm</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="column">
-                        <button type="submit" class="confirm-btn" style="float:left;">Confirm</button>
-                    </div>
-                </div>
+                </form>
             </div>
-            </form>
-        </div>
         </div>
     </section>
     <!-- -->
@@ -171,14 +187,14 @@ $serviceSelected = $_SESSION["service_selected"];
                 <div class="box">
                     <h3>Quick Links</h3>
                     <a href="../index.php">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Doctors</a>
+                    <a href="../html/about-us.php">About Us</a>
+                    <a href="../html/doctors.php">Doctors</a>
                 </div>
                 <div class="box">
                     <h3>Contact Us</h3>
-                    <a href="#"> +123-456-7890 </a>
-                    <a href="#"> shaikhanas@gmail.com </a>
-                    <a href="#"> mumbai, india - 400104 </a>
+                    <a href="tel:+6566224488"> +65 6622 4488 </a>
+                    <a href="mailto:denticare@localhost.com"> denticare@localhost.com </a>
+                    <a href="#"> 21 Lor 8 Toa Payoh, #01-200, Singapore 310019 </a>
                 </div>
                 <div class="box-message">
                     <h3>Send Us a Message</h3>
@@ -191,7 +207,6 @@ $serviceSelected = $_SESSION["service_selected"];
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="footer-bottom text-center">

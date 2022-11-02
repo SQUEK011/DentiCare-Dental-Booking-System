@@ -369,7 +369,7 @@ a {
 /*-----Home Page's Our Services-----*/
 
 .doctors {
-  background: #fafafa;
+  background: var(--white);
   padding: 20px 0px 40px;
 }
 
@@ -398,19 +398,15 @@ a {
 .doctors .box-container .box {
   padding: 2rem;
   text-align: center;
-  background: var(--white);
+  background: #EAF4FF;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
   border-radius: 5rem;
-}
-
-.doctors .box-container .box:hover {
-  background: var(--hover);
-  cursor: pointer;
+  
 }
 
 .doctors .box-container .box img {
   margin: 1rem 0;
-  height: 10rem;
+  height: 15rem;
 }
 
 .doctors .box-container .box h3 {
@@ -421,15 +417,25 @@ a {
 }
 
 .doctors .box-container .box p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #666;
-  line-height: 2;
+  line-height: 1.5;
 }
+
+.doctors .box-container :hover{
+  transform: scale(1.1);
+}
+
+.doctors .box-container .box :hover{
+  transform: none;
+}
+
+
 
 /*--Testimonial--*/
 .testimonials {
   padding: 40px 0px 80px 0px;
-  background: #f1f1f1;
+  background: #EAF4FF;
   color: #434343;
   text-align: center;
 }
@@ -555,110 +561,6 @@ a {
   margin: 20px 0;
 }
 
-.contact-btn {
-  padding: 0.6rem 1.3rem;
-  background-color: #fff;
-  border: 2px solid #fafafa;
-  font-size: 0.95rem;
-  color: var(--oxford-blue-2);
-  line-height: 1;
-  border-radius: 25px;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 0;
-}
-
-.contact-btn:hover {
-  background-color: transparent;
-  color: #fff;
-}
-
-.contactus-input-container span {
-  position: absolute;
-  top: 0;
-  left: 25px;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  padding: 0 0.4rem;
-  color: transparent;
-  pointer-events: none;
-  z-index: 500;
-}
-
-.contactus-input-container span:before,
-.contactus-input-container span:after {
-  content: "";
-  position: absolute;
-  width: 10%;
-  opacity: 0;
-  transition: 0.3s;
-  height: 5px;
-  background-color: #1abc9c;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.contactus-input-container span:before {
-  left: 50%;
-}
-
-.contactus-input-container span:after {
-  right: 50%;
-}
-
-.contactus-input-container.focus label {
-  top: 0;
-  transform: translateY(-50%);
-  left: 25px;
-  font-size: 0.8rem;
-}
-
-.contactus-input-container.focus span:before,
-.contactus-input-container.focus span:after {
-  width: 50%;
-  opacity: 1;
-}
-
-.contact-info {
-  padding: 2.3rem 2.2rem;
-  position: relative;
-}
-
-.contact-info .contact-title {
-  color: var(--oxford-blue-2);
-}
-
-.contact-text {
-  color: #333;
-  margin: 1.5rem 0 2rem 0;
-}
-
-.contact-information {
-  display: flex;
-  color: #555;
-  margin: 0.7rem 0;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-.contact-icon {
-  width: 28px;
-  margin-right: 0.7rem;
-}
-
-
-.contact-info:before {
-  content: "";
-  position: absolute;
-  width: 110px;
-  height: 100px;
-  border: 22px solid #4070f4;
-  border-radius: 50%;
-  bottom: -77px;
-  right: 50px;
-  opacity: 0.3;
-}
 
 /*-----About Us Page----*/
 .about-us-banner {
@@ -804,6 +706,7 @@ a {
 
 .container-form-registration {
 
+  position: relative;
   max-width: 900px;
   width: 100%;
   border-radius: 6px;
@@ -924,6 +827,7 @@ form button:hover {
 /*Login Form*/
 .container-form-login {
 
+  position: relative;
   max-width: 530px;
   width: 100%;
   background: #fff;
@@ -986,7 +890,7 @@ form button:hover {
 
 /*----Choose Services-----*/
 .services{
-  background: linear-gradient(135deg, #71b7e6, var(--royal-blue-light));
+  background: #EAF4FF;
   padding: 20px 0px 40px;
 }
 
@@ -1020,10 +924,7 @@ form button:hover {
   border-radius: 5rem;
 }
 
-.services .box-container .box:hover {
-  background: var(--hover);
-  cursor: pointer;
-}
+
 
 .services .box-container .box img {
   margin: 1rem 0;
@@ -1040,7 +941,7 @@ form button:hover {
 .services .box-container .box p {
   font-size: 1.5rem;
   color: #666;
-  line-height: 2;
+  line-height: 1.5;
 }
 
 /*Show Profile*/
@@ -1565,34 +1466,4 @@ display: none;
   .navbar-list {
     gap: 15px;
   }
-}
-
-/**/
-.forget-password .captcha-area .captcha-img{
-  height: 100%;
-  width: 345px;
-  user-select: none;
-  background: #000;
-  border-radius: 5px;
-  position: relative;
-}
-.forget-password .captcha-img img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  opacity: 0.95;
-}
-.forget-password .captcha-img .captcha{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  color: #fff;
-  font-size: 35px;
-  text-align: center;
-  letter-spacing: 10px;
-  transform: translate(-50%, -50%);
-  text-shadow: 0px 0px 2px #b1b1b1;
-  font-family: 'Noto Serif', serif;
 }

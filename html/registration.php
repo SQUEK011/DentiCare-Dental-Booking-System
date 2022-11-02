@@ -69,9 +69,9 @@ if (isset($_POST['register'])) {
     user_name,pass_word,admin_rights)
      VALUES ('$user','$password',0);";
 
-if (!mysqli_query($conn, $sql)) {
-  echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
-}
+  if (!mysqli_query($conn, $sql)) {
+    echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
+  }
 
   $sql = "INSERT INTO user_profile(
     user_name,full_name,nric,D_O_B,gender,
@@ -83,15 +83,13 @@ if (!mysqli_query($conn, $sql)) {
 
   if (!mysqli_query($conn, $sql)) {
     echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
-  }else {
+  } else {
 
     $_SESSION['use'] = $user;
 
     echo '<script type="text/javascript"> alert("Register Successful!");</script>';
     echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
   }
-
-
 }
 
 ?>
@@ -106,13 +104,13 @@ if (!mysqli_query($conn, $sql)) {
             <div class="icon-mail">
               <img src="../assets/img/icons/envelope-solid.svg" width="14px" height="14px">
             </div>
-            <a href="mailto:info@example.com" class="contact-link">info@example.com</a>
+            <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
           </li>
           <li class="contact-item">
             <div class="icon-phone">
               <img src="../assets/img/icons/phone-solid.svg" width="14px" height="14px">
             </div>
-            <a href="tel:+917052101786" class="contact-link">+91-7052-101-786</a>
+            <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
           </li>
         </ul>
       </div>
@@ -128,15 +126,15 @@ if (!mysqli_query($conn, $sql)) {
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>About Us</a>
+              <a href="../html/about-us.php" class="navbar-link" data-nav-link>About Us</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>Doctors</a>
+              <a href="../html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
             </li>
 
             <li>
-              <a href="registration.php" class="navbar-link" data-nav-link>
+              <a href="registration.php?isLogin=true" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>
@@ -144,7 +142,7 @@ if (!mysqli_query($conn, $sql)) {
           </ul>
 
         </nav>
-        <a href="../html/select_service.php" class="btn">Book appointment</a>
+        <a href="registration.php?isUser=true" class="btn">Book appointment</a>
         <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
           <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
           <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -296,15 +294,15 @@ if (!mysqli_query($conn, $sql)) {
       <div class="box-container">
         <div class="box">
           <h3>Quick Links</h3>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Doctors</a>
+          <a href="../index.php">Home</a>
+          <a href="../html/about-us.php">About Us</a>
+          <a href="../html/doctors.php">Doctors</a>
         </div>
         <div class="box">
           <h3>Contact Us</h3>
-          <a href="#"> +123-456-7890 </a>
-          <a href="#"> shaikhanas@gmail.com </a>
-          <a href="#"> mumbai, india - 400104 </a>
+          <a href="tel:+6566224488"> +65 6622 4488 </a>
+          <a href="mailto:denticare@localhost.com"> denticare@localhost.com </a>
+          <a href="#"> 21 Lor 8 Toa Payoh, #01-200, Singapore 310019 </a>
         </div>
         <div class="box-message">
           <h3>Send Us a Message</h3>
@@ -318,7 +316,6 @@ if (!mysqli_query($conn, $sql)) {
       </div>
     </div>
   </div>
-  </div>
 
   <div class="footer-bottom text-center">
     <div class="container">
@@ -328,9 +325,10 @@ if (!mysqli_query($conn, $sql)) {
     </div>
   </div>
   <!--Javascript files-->
-  <script src="assets/js/scripts.js" defer></script>
+  <script src="../assets/js/scripts.js" defer></script>
 </footer>
 <?php
 CloseCon($conn)
 ?>
+
 </html>

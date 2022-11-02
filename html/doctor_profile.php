@@ -1,6 +1,71 @@
 <!DOCTYPE html>
 <html>
 
+<?php
+include("../assets/php/db_connection.php");
+$conn = OpenCon();
+session_start();
+
+//Header Functions
+if (isset($_GET['isLogin'])) {
+    openLoginForm();
+}
+
+if (isset($_GET['isUser'])) {
+    bookAppointment();
+}
+
+function openLoginForm()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/profile.php");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+function bookAppointment()
+{
+    if (isset($_SESSION['use'])) {
+        header("Location: ../html/select_service.php");
+    } else {
+        header("Location: ../html/login.php");
+    }
+}
+
+//if page came from doctors.php
+$isFromDoctors = $_SESSION['fromDoctors'];
+
+if (isset($_GET['return'])) {
+    $_SESSION['fromDoctors'] = false;
+    header("Location: ../html/doctors.php");
+}
+
+//SQL Query
+//Declare variables 
+$doctorName =
+    $service1 = $service2 = $service3 =
+    $aboutDoc = $imageUrl = "";
+
+$selectedDoc = $_SESSION["doctor_selected"];
+$sql = "SELECT * from doctors where doctor_name = '$selectedDoc'";
+$results = $conn->query($sql);
+
+if (mysqli_num_rows($results) > 0) {
+    while ($row = $results->fetch_assoc()) {
+        $doctorName = $row['doctor_name'];
+        $service1 = $row['service_1'];
+        $service2 = $row['service_2'];
+        $service3 = $row['service_3'];
+        $aboutDoc = $row['about_doctor'];
+        $imageUrl = $row['image_url'];
+    }
+}
+
+mysqli_free_result($results);
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,64 +80,6 @@
     <!--CSS-->
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
-<?php
-include("../assets/php/db_connection.php");
-$conn = OpenCon();
-session_start();
-
-if (isset($_GET['isLogin'])) {
-    openLoginForm();
-}
-
-if (isset($_GET['isUser'])) {
-    bookAppointment();
-}
-function openLoginForm()
-{
-    if (isset($_SESSION['use'])) {
-        header("Location: ../html/login-test.php");
-    } else {
-        header("Location: ../html/login.php");
-    }
-}
-
-function bookAppointment()
-{
-    if (isset($_SESSION['use'])) {
-        header("Location: ../html/select_service.html");
-    } else {
-        header("Location: ../html/login.php");
-    }
-}
-
-if (isset($_POST['login'])) {
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-
-    $sql = "SELECT * FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
-
-    $result = mysqli_num_rows($conn->query($sql));
-
-    if ($result > 0) {
-        $sql = "SELECT admin_rights FROM user_accounts WHERE user_name = '$user' AND pass_word = '$pass'";
-        $result = $conn->query($sql)->fetch_row();
-
-        $_SESSION['use'] = $user;
-
-        if ($result[0] == 1) {
-            echo '<script type="text/javascript"> window.open("../admin/dashboard.php.","_self");</script>';            //  On Successful Login redirects to admin.php
-        } else {
-            echo '<script type="text/javascript"> alert("Login Successful!");</script>';
-            echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
-
-        }
-    } else {
-        echo "invalid UserName or Password";
-    }
-}
-
-?>
 
 <body>
     <!--NAV Component-->
@@ -101,7 +108,7 @@ if (isset($_POST['login'])) {
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
 
-                        <li>
+                    <li>
                             <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
 
@@ -114,7 +121,7 @@ if (isset($_POST['login'])) {
                         </li>
 
                         <li>
-                            <a href="?isLogin=true" class="navbar-link" data-nav-link>
+                            <a href="doctors_services.php?isLogin=true" class="navbar-link" data-nav-link>
                                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
                             </a>
                         </li>
@@ -122,7 +129,7 @@ if (isset($_POST['login'])) {
                     </ul>
 
                 </nav>
-                <a href="?isUser=true" class="btn">Book appointment</a>
+                <a href="doctors_services.php?isUser=true" class="btn">Book appointment</a>
                 <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
                     <img src="../assets/img/icons/bars-solid.svg" width="20px" aria-hidden="true" class="menu-icon">
                     <img src="../assets/img/icons/xmark-solid.svg" width="20px" aria-hidden="true" class="close-icon">
@@ -130,37 +137,66 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </header>
-    <!-- Login Form-->
-    <div class="form-section">
-        <!--div class="bg-modal" id="myForm"-->
-        <div class="container-form-login">
-            <header>Sign In to Book/Manage Appointments
 
-            </header>
-            <form action="" method="post">
-                <div class="input-field">
-                    <label>Username: </label>
-                    <input type="text" name="user" size="40" placeholder="Enter your email" required>
+    <!-- Doctors Profile -->
+    <section class="doctors-full-profile background" id="doctors-full-profile">
+        <div class="surround-container">
+            <div class="doctorsfull-profile-container">
+                <div class="row">
+                    <div class="column">
+                        <div class="dp-container">
+                            <img src="<?= $imageUrl ?>" alt="">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="text-container">
+                            <header><?= $doctorName ?></header>
+                            <div class="services-provided-container">
+                                <span class="title">Services Provided</span>
+                                <ul>
+                                    <?php echo ($service1 != "") ? "<li>$service1</li>" : ""; ?>
+                                    <?php echo ($service2 != "") ? "<li>$service2</li>" : ""; ?>
+                                    <?php echo ($service3 != "") ? "<li>$service3</li>" : ""; ?>
+                                </ul>
+                            </div>
+                            <div class="about-doctor-container">
+                                <span class="title">About Doctor</span>
+                                <p><?= $aboutDoc ?></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field">
-                    <label>Password: </label>
-                    <input type="password" name="pass" size="40" placeholder="Enter your password" required>
-                </div>
-                <a href="../html/forget-password.php" class="text">Forget Password?</a><br>
-                <button class="submitBtn" name="login">
-                    <span class="btnText">Sign In</span>
-                </button>
-            </form>
-            <div class="login-signup">
-                <span class="text">Not a member?
-                    <a href="../html/registration.php" class="text signup-link">Sign Up Now</a>
-                </span>
             </div>
+            <?php
+                echo (!$isFromDoctors) ?
+                '<div class=btns-container>
+                    <div class="row">
+                        <div class="column">
+                            <a href="../html/doctors_services.php" style="float:right;">
+                                <button type="submit" class="back-btn">Back</button>
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a href="../html/select_appt.php" style="float:left;">
+                                <button type="submit" class="confirm-btn">Confirm</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>'
+                : '<div class=btns-container>
+                        <div class="row">
+                            <div class="column">
+                                <a href="doctor_profile.php?return" style="float:right;">
+                                    <button type="submit" class="back-btn">Back</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>';
+            ?>
+            
         </div>
-        <!--/div-->
-    </div>
-
-
+    </section>
+    <!-- -->
 </body>
 <footer class="footer">
 
