@@ -126,7 +126,7 @@ function selectService()
                     <div class="box" name="General Dentistry">
                         <img src="../assets/img/images/services-1.webp" alt="">
                         <h3>General Dentistry</h3>
-                        <p>Quick and easy booking of dental appointments.</br>5 minutes is all you need to check our dentists' availability and book your desired timeslots!</p>
+                        <p>Quick and easy booking of dental appointments.</br>5 minutes is all you need to check our dentists' availability and book your desired timeslots!</br></br></br> </p>
                     </div>
                 </a>
 

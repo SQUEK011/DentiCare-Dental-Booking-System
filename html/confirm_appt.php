@@ -87,7 +87,7 @@ function popUpScreen($appt_time, $appt_date, $doctor_name, $service)
         <div id='myDiv' class='animate-bottom'>
         <div class='modal-content'>
             <div class='modal-text'>
-                <h2>Booking Sucess!</h2>
+                <h2>Booking Success!</h2>
                 <p>Congratulations you have successfully booked an appointment! A confirmation mail has been sent to your Email Address provided by you.</p>
             </div>
             <div class='confirm-appointment-container'>
