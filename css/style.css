@@ -369,7 +369,7 @@ a {
 /*-----Home Page's Our Services-----*/
 
 .doctors {
-  background: #fafafa;
+  background: var(--white);
   padding: 20px 0px 40px;
 }
 
@@ -398,19 +398,15 @@ a {
 .doctors .box-container .box {
   padding: 2rem;
   text-align: center;
-  background: var(--white);
+  background: #EAF4FF;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
   border-radius: 5rem;
 }
 
-.doctors .box-container .box:hover {
-  background: var(--hover);
-  cursor: pointer;
-}
 
 .doctors .box-container .box img {
   margin: 1rem 0;
-  height: 10rem;
+  height: 15rem;
 }
 
 .doctors .box-container .box h3 {
@@ -421,15 +417,23 @@ a {
 }
 
 .doctors .box-container .box p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #666;
-  line-height: 2;
+  line-height: 1.5;
+}
+
+.doctors .box-container :hover{
+  transform: scale(1.1);
+}
+
+.doctors .box-container .box :hover{
+  transform: none;
 }
 
 /*--Testimonial--*/
 .testimonials {
   padding: 40px 0px 80px 0px;
-  background: #f1f1f1;
+  background: #EAF4FF;
   color: #434343;
   text-align: center;
 }

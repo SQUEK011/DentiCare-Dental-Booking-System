@@ -180,20 +180,20 @@
         
           <div class="box-container">
             <div class="box" >
-              <img src="assets/img/images/doctor1.png" alt="Doctor Lewis">
+              <img src="assets/img/images/doctor1.png" alt="Doctor Andie">
               <h3>Dr Andie</h3>
               <p>Dr Andie graduated from National University of Singapore with a degree in dental surgery. He keeps up his education by often attending classes and workshops to advance as a clinician. </br> He has prior experience working in the fields of advanced dentistry, periodontology and prosthodontics in a sizable private dental practice.
               </p>
             </div>
 
             <div class="box">
-              <img src="assets/img/images/doctor2.png" alt="Doctor David">
+              <img src="assets/img/images/doctor2.png" alt="Doctor Azlin">
               <h3>Dr Azlin</h3>
               <p>Dr Azlin graduated with a Bachelor of Dental Surgery from National University of Singapore. His four years of post-graduation employment in various public health institutes gave him substantial exposure and experience. </br> With a core focus on crowns, bridges, and dentures, he has given primary dental care at National Dental Centre and Tan Tock Seng Hospital Dental Clinic. </p>
             </div>
 
             <div class="box">
-              <img src="assets/img/images/doctor3.png" alt="Doctor Carol">
+              <img src="assets/img/images/doctor3.png" alt="Doctor Josephiney">
               <h3>Dr Josephiney</h3>
               <p>Dr Josephiney is an orthodontic specialist registered with the Singapore Dental Council. She graduated from National University of Singapore with a Bachelor of Dental Surgery and a Master of Dental Surgery (Orthodontics). </br>She is skilled in treating a variety of complicated disorders, including early interceptive treatment for toddlers and treatment with clear aligners for adults.</p>
             </div>
