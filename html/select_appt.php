@@ -33,6 +33,7 @@ function bookAppointment()
     }
 }
 
+
 if ($_SESSION['fromEdit']) {
     $appt_no = $_SESSION['appt_no'];
     $sql = "SELECT * from appointments where appt_no = $appt_no";
@@ -48,6 +49,7 @@ if ($_SESSION['fromEdit']) {
     //$currentUser = $_SESSION['use'];
     $doctorSelected = $_SESSION["doctor_selected"];
     $serviceSelected = $_SESSION["service_selected"];
+    $_SESSION['fromEdit'] = false;
 }
 
 
@@ -130,7 +132,7 @@ if ($_SESSION['fromEdit']) {
         <div class="container">
             <h1 class="heading text-center"> Available Appointments</h1>
             <div class="show-appointments-container">
-                <form action="confirm_appt.php" method="get">
+                <form name="myForm" action="confirm_appt.php" method="get" onsubmit="return validate()">
                     <table border="1" class="appointment-table">
                         <tr>
                             <th>Appointment Date</th>
@@ -147,7 +149,7 @@ if ($_SESSION['fromEdit']) {
                             <tr>
                                 <td>" . $row['appt_date'] . "</td>
                                 <td>" . $row['appt_time'] . "</td>
-                                <td><input type='radio' name='select_appt' value='" . $row['appt_no'] . "'></td>
+                                <td><input type='radio' name='select_appt' id='appt' value='" . $row['appt_no'] . "'required></td>
                             </tr>
                         ";
                             }

@@ -112,7 +112,7 @@ if (isset($_GET['edit'])) {
                                 <th></th>
                             </tr>
                             <?php
-                            $sql = "SELECT appt_no, appt_date, appt_time, user_name from appointments where doctor_name='$doctor_name[0]'" ;
+                            $sql = "SELECT appt_no, appt_date, appt_time, user_name from appointments where doctor_name='$doctor_name[0]' ORDER BY appt_date ASC" ;
                             $results = $conn->query($sql);
                             $i = 1;
 

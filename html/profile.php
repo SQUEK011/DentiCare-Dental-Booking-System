@@ -241,7 +241,7 @@ if (isset($_GET["edit"])) {
         <div class="next-appointment-container">
           <span class="title">Next Appointment</span>
           <?php
-          $sql = "SELECT * from appointments where user_name ='" . $_SESSION['use'] . "'";
+          $sql = "SELECT * from appointments where user_name ='" . $_SESSION['use'] . "' ORDER BY appt_date ASC, appt_time ASC LIMIT 1";
           $results = $conn->query($sql);
           if (mysqli_num_rows($results) > 0) {
             while ($row = $results->fetch_assoc()) {

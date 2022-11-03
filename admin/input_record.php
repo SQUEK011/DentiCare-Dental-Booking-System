@@ -24,28 +24,6 @@ else {
         </script>';
 }
 
-/*function sendEmailtoPatient(){
-    $to      = 'poketree@localhost';
-    $subject = 'Appointment is cancelled';
-    $message = "
-    
-    <html>
-        <body>
-              <h2>Appoint has been cancelled due to doctor's arrangement</h2>
-              <p> Please book another appointment or contact the doctor via an email for clarification<br><br>
-                We apologise for the inconvienience caused.
-              </p>
-      </body>
-  
-  </html>";
-    $headers = 'From: denticare@localhost' . "\r\n" .
-        'Reply-To: f32ee@localhost' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-    $headers .= "MIME-Version: 1.0" . "\r\n"; 
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
-    
-    mail($to, $subject, $message, $headers,'-denticare@localhost');
-}*/
 
 CloseCon($conn)
 ?>

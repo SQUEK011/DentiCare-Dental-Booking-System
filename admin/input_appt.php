@@ -75,7 +75,7 @@
     <div class="container">
                 <h1 class="heading text-center">Input Appointment</h1>
                 <div class="show-appointments-container">
-                    <form action="input_record.php" method="post">
+                    <form action="input_record.php" method="post" onsubmit="editClear(event)">
                         <table border="1" class="appointment-table">
                             <tr>
                                 <th>Appointment Date</th>
@@ -85,7 +85,7 @@
                                 <th></th>
                             </tr>
                             <tr>
-                                <th><input type="date" name="getDate" required></th>
+                                <th><input type="date" name="getDate" id="editDate" required></th>
                                 <th><input type="time" name="getTime" min="09:00" max="17:00" required></th>
                                 <th>
                                     <select name="getName" required>
@@ -117,17 +117,9 @@
     </div>
   </section>
 
-  <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function() {
-        sidebar.classList.toggle("active");
-        if(sidebar.classList.contains("active")){
-        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-        }else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
- </script>
+  
+  <!--Javascript files-->
+  <script src="../assets/js/dashboard.js" defer></script>
 
 </body>
 <?php

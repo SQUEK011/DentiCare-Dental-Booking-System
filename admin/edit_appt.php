@@ -77,7 +77,7 @@
     <div class="container">
                 <h1 class="heading text-center">Edit Appointment</h1>
                 <div class="show-appointments-container">
-                    <form action="update_record.php" method="post">
+                    <form action="update_record.php" method="post" onsubmit="editClear(event)">
                     <table border="1" class="appointment-table">
                             <tr>
                                 
@@ -95,8 +95,8 @@
                                 while ($row = $results->fetch_assoc()) {
                                     echo "<tr>";
                                 echo "<td>". $row['user_name'] ."</td>";
-                                echo "<td><input type='date' name='getDate' value='". $row['appt_time'] . "' required></td>";
-                                echo "<td><input type='time' name='getTime' min='09:00' max='17:00' value='". $row['appt_date'] ."' required></td>";
+                                echo "<td><input type='date' name='getDate' id='editDate' value='".$row['appt_date']  . "' required></td>";
+                                echo "<td><input type='time' name='getTime' min='09:00' max='17:00' value='". $row['appt_time'] ."' required></td>";
                                 echo "
                                 <td>
                                     <button type='submit' class='save-btn' value='" . $row['appt_no'] . "'>Save</button>
@@ -122,17 +122,9 @@
     </div>
   </section>
 
-  <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function() {
-        sidebar.classList.toggle("active");
-        if(sidebar.classList.contains("active")){
-        sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-        }else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
- </script>
+  
+ <!--Javascript files-->
+ <script src="../assets/js/dashboard.js" defer></script>
 
 </body>
 <?php

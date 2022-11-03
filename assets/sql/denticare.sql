@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 06:19 PM
+-- Generation Time: Nov 03, 2022 at 04:36 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -41,15 +41,15 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`appt_no`, `appt_date`, `appt_time`, `doctor_name`, `dental_service`, `user_name`) VALUES
-(0, '2022-11-22', '14:00:00', 'Dr Azlin Daur', 'General Dentistry', NULL),
 (1, '2022-11-10', '14:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
+(2, '2022-11-10', '14:00:00', 'Dr Andie Lao', 'Aesthetic Dentistry', NULL),
 (3, '2022-11-10', '15:00:00', 'Dr Azlin Daur', 'General Dentistry', NULL),
 (4, '2022-11-11', '10:00:00', 'Dr Andie Lao', 'Extractions and Minor Surgery', NULL),
 (5, '2022-11-11', '14:00:00', 'Dr Azlin Daur', 'General Dentistry', NULL),
 (6, '2022-11-11', '15:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
 (7, '2022-11-11', '16:00:00', 'Dr Andie Lao', 'General Dentistry', 'poketree'),
 (8, '2022-11-11', '16:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
-(9, '2022-11-30', '14:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
+(9, '2022-11-12', '10:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (10, '2022-11-12', '14:00:00', 'Dr Andie Lao', 'Aesthetic Dentistry', NULL),
 (11, '2022-11-12', '13:00:00', 'Dr Azlin Daur', 'General Dentistry', NULL),
 (12, '2022-11-13', '10:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
@@ -57,9 +57,11 @@ INSERT INTO `appointments` (`appt_no`, `appt_date`, `appt_time`, `doctor_name`, 
 (14, '2022-11-14', '10:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (15, '2022-11-14', '13:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (16, '2022-11-14', '16:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
+(17, '2022-11-15', '10:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (18, '2022-11-15', '14:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
 (19, '2022-11-15', '16:00:00', 'Dr. Josephiney Toy Chier Sia', 'Aesthetic Dentistry', NULL),
-(20, '2022-11-16', '10:00:00', 'Dr Azlin Daur', 'Extractions and Minor Surgery', NULL);
+(20, '2022-11-16', '10:00:00', 'Dr Azlin Daur', 'Extractions and Minor Surgery', 'poketree'),
+(21, '2022-11-30', '11:30:00', 'Dr. Josephiney Toy Chier Sia', 'Aesthetic Dentistry', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,10 +105,12 @@ CREATE TABLE `user_accounts` (
 --
 
 INSERT INTO `user_accounts` (`user_name`, `pass_word`, `admin_rights`) VALUES
+('adsdasd', 'asdasdas', '0'),
 ('amktree', 'passwordadmin', '1'),
 ('andieliao', 'andieliao', '1'),
 ('jtoy', 'jtoy', '1'),
 ('poketree', 'poketree', '0'),
+('queksa', 'G0d!s3v3ryth1ng', '0'),
 ('tptree', 'passwordnoadmin', '0');
 
 -- --------------------------------------------------------
@@ -138,7 +142,9 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`user_name`, `full_name`, `nric`, `D_O_B`, `gender`, `occupation`, `mobile_no`, `email`, `allergies`, `address_1`, `address_2`, `postal_code`, `emergency_contact_name`, `emergency_contact_no`, `emergency_contact_relation`) VALUES
-('poketree', 'Bum See', 'S1234567', '2022-10-25', 'Male', 'Doctor', '12345678', 'poketree@localhost.com', 'NIL', '1 tulang', 'NIL', '312456', 'Bum Say', '12345687', 'Mother');
+('poketree', 'Bum See', 'S1234567', '2022-10-25', 'Male', 'Doctor', '12345678', 'poketree@localhost.com', 'NIL', '1 tulang', 'NIL', '312456', 'Bum Say', '12345687', 'Mother'),
+('adsdasd', 'asdasdas', 'adadssda', '2022-11-03', 'Male', 'asdasdas', 'asdasdsa', 'asdasdads', 'asdasdads', 'adsasda', 'NIL', 'asdasd', 'asdadssad', 'asdasdas', 'adasdas'),
+('queksa', 'Sen A', 'S9746349', '2022-10-06', 'Male', 'Doctor', '+6562551', 'quek011@localhost.com', 'Nil', '1 Tua Ku Lang', 'NIL', '910031', 'Sen A', '+6562551', 'Mother');
 
 --
 -- Indexes for dumped tables
@@ -148,7 +154,7 @@ INSERT INTO `user_profile` (`user_name`, `full_name`, `nric`, `D_O_B`, `gender`,
 -- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
-  ADD PRIMARY KEY (`appt_no`),
+  ADD PRIMARY KEY (`appt_no`) USING BTREE,
   ADD KEY `user_name` (`user_name`),
   ADD KEY `doctor_name` (`doctor_name`);
 
@@ -169,6 +175,16 @@ ALTER TABLE `user_accounts`
 --
 ALTER TABLE `user_profile`
   ADD KEY `user_name` (`user_name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `appt_no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

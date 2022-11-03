@@ -35,6 +35,7 @@ function bookAppointment()
 
 //if page came from doctors.php
 $isFromDoctors = $_SESSION['fromDoctors'];
+$_SESSION['fromEdit'] = false;
 
 if (isset($_GET['return'])) {
     $_SESSION['fromDoctors'] = false;

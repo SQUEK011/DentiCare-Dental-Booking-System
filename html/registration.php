@@ -46,52 +46,6 @@ function bookAppointment()
   }
 }
 
-if (isset($_POST['register'])) {
-  $user = $_POST['getUsername'];
-  $fullname = $_POST['getName'];
-  $dob = $_POST['getDOB'];
-  $nric = $_POST['getNRIC'];
-  $mobileNumber = $_POST['getMobile'];
-  $gender = $_POST['getGender'];
-  $occupation = $_POST['getOccupation'];
-  $email = $_POST['getEmail'];
-  $allergies = $_POST['getAllergies'];
-  $addressOne = $_POST['getAddressOne'];
-  $addressTwo = $_POST['getAddressTwo'];
-  $postal = $_POST['getPostal'];
-  $emergencyName = $_POST['getEmergencyName'];
-  $emergencyContact = $_POST['getEmergencyNumber'];
-  $emergencyRelate = $_POST['getEmergencyRelation'];
-  $password = $_POST['getPassword'];
-  $confirmPass = $_POST['confirmPassword'];
-
-  $sql = "INSERT INTO user_accounts(
-    user_name,pass_word,admin_rights)
-     VALUES ('$user','$password',0);";
-
-  if (!mysqli_query($conn, $sql)) {
-    echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
-  }
-
-  $sql = "INSERT INTO user_profile(
-    user_name,full_name,nric,D_O_B,gender,
-  occupation,mobile_no,email,allergies,address_1,address_2,
-  postal_code,emergency_contact_name,emergency_contact_no,emergency_contact_relation)
-  VALUES ('$user','$fullname','$nric','$dob','$gender','$occupation',
-  '$mobileNumber','$email','$allergies','$addressOne','$addressTwo','$postal',
-  '$emergencyName','$emergencyContact','$emergencyRelate');";
-
-  if (!mysqli_query($conn, $sql)) {
-    echo "Failed to register: " . mysqli_error($connNew) . ".Please try again.";
-  } else {
-
-    $_SESSION['use'] = $user;
-
-    echo '<script type="text/javascript"> alert("Register Successful!");</script>';
-    echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
-  }
-}
-
 ?>
 
 <body>
@@ -156,7 +110,7 @@ if (isset($_POST['register'])) {
     <div class="container-form-registration">
       <header>Registration
       </header>
-      <form action="" method="post">
+      <form action="process_registration.php" method="post" onsubmit="allClear(event)">
         <div class="form first">
           <div class="details personal">
             <span class="title">Personal Details</span>
@@ -164,22 +118,22 @@ if (isset($_POST['register'])) {
             <div class="fields">
               <div class="input-field">
                 <label>Full Name</label>
-                <input type="text" name="getName" placeholder="Enter your name" required>
+                <input type="text" name="getName" id="name" placeholder="Enter your name" required>
               </div>
 
               <div class="input-field">
                 <label>Date of Birth</label>
-                <input type="date" name="getDOB" placeholder="Enter birth date" required>
+                <input type="date" name="getDOB" id="dob" placeholder="Enter birth date" required>
               </div>
 
               <div class="input-field">
                 <label>NRIC</label>
-                <input type="text" name="getNRIC" placeholder="Enter your NRIC" required>
+                <input type="text" name="getNRIC" id="nric" placeholder="Enter your NRIC" required>
               </div>
 
               <div class="input-field">
                 <label>Mobile Number</label>
-                <input type="text" name="getMobile" placeholder="Enter mobile number" required>
+                <input type="text" name="getMobile" id="mobile" placeholder="Enter mobile number" required>
               </div>
 
               <div class="input-field">
@@ -194,12 +148,12 @@ if (isset($_POST['register'])) {
 
               <div class="input-field">
                 <label>Occupation</label>
-                <input type="text" name="getOccupation" placeholder="Enter your occupation" required>
+                <input type="text" name="getOccupation" id="occupation" placeholder="Enter your occupation" required>
               </div>
 
               <div class="input-field">
                 <label>Email</label>
-                <input type="text" name="getEmail" placeholder="Enter your Email" required>
+                <input type="text" name="getEmail" id="email" placeholder="Enter your Email" required>
               </div>
 
               <div class="input-field">
@@ -225,7 +179,7 @@ if (isset($_POST['register'])) {
 
               <div class="input-field">
                 <label>Postal Code</label>
-                <input type="text" name="getPostal" placeholder="Enter postal code" required>
+                <input type="text" name="getPostal" id="postalCode" placeholder="Enter postal code" required>
               </div>
             </div>
 
@@ -237,17 +191,17 @@ if (isset($_POST['register'])) {
             <div class="fields">
               <div class="input-field">
                 <label>Emergency Contact Name</label>
-                <input type="text" name="getEmergencyName" placeholder="Enter Emergency Contact Name" required>
+                <input type="text" name="getEmergencyName" id="emergencyName" placeholder="Enter Emergency Contact Name" required>
               </div>
 
               <div class="input-field">
-                <label>Emergency Contact Number</label>
-                <input type="text" name="getEmergencyNumber" placeholder="Enter Emergency Contact Number" required>
+                <label>Emergency Contact Number </label>
+                <input type="text" name="getEmergencyNumber" id="emergencyNumber" placeholder="Enter Emergency Contact Number" required>
               </div>
 
               <div class="input-field">
                 <label>Relationship with Contact</label>
-                <input type="text" name="getEmergencyRelation" placeholder="Enter Relationship with Contact" required>
+                <input type="text" name="getEmergencyRelation" id="emergencyRelation" placeholder="Enter Relationship with Contact" required>
               </div>
             </div>
           </div>
@@ -263,17 +217,17 @@ if (isset($_POST['register'])) {
 
               <div class="input-field">
                 <label>Password</label>
-                <input type="text" name="getPassword" placeholder="Enter Password" required>
+                <input type="text" name="getPassword" id="passwordInput" placeholder="Enter Password" required>
               </div>
 
               <div class="input-field">
                 <label>Confirm Password</label>
-                <input type="text" name="confirmPassword" placeholder="Enter Password again" required>
+                <input type="text" name="confirmPassword" id="confirmPasswordInput" placeholder="Enter Password again" required>
               </div>
             </div>
           </div>
 
-          <button class="submitBtn" name="register">
+          <button class="submitBtn" name="register" id="register-input">
             <span class="btnText">Submit</span>
           </button>
           <a href="login.php" style="color:blue;">Click here to Sign In</a>
