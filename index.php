@@ -57,14 +57,14 @@
                 <img src="assets/img/icons/envelope-solid.svg" width="14px"
                   height="14px">
               </div>
-              <a href="mailto:denticare@localhost" class="contact-link">denticare@localhost</a>
+              <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
             </li>
             <li class="contact-item">
               <div class="icon-phone">
                 <img src="assets/img/icons/phone-solid.svg" width="14px"
                   height="14px">
               </div>
-              <a href="tel:+917052101786" class="contact-link">+65 6555 4888</a>
+              <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
             </li>
           </ul>
         </div>
@@ -181,21 +181,21 @@
           <div class="box-container">
             <div class="box" >
               <img src="assets/img/images/doctor1.png" alt="Doctor Lewis">
-              <h3>Dr Lewis</h3>
-              <p>Dr Lewis graduated from National University of Singapore with a degree in dental surgery. He keeps up his education by often attending classes and workshops to advance as a clinician. </br> He has prior experience working in the fields of advanced dentistry, periodontology and prosthodontics in a sizable private dental practice.
+              <h3>Dr Andie</h3>
+              <p>Dr Andie graduated from National University of Singapore with a degree in dental surgery. He keeps up his education by often attending classes and workshops to advance as a clinician. </br> He has prior experience working in the fields of advanced dentistry, periodontology and prosthodontics in a sizable private dental practice.
               </p>
             </div>
 
             <div class="box">
               <img src="assets/img/images/doctor2.png" alt="Doctor David">
-              <h3>Dr David</h3>
-              <p>Dr David graduated with a Bachelor of Dental Surgery from National University of Singapore. His four years of post-graduation employment in various public health institutes gave him substantial exposure and experience. </br> With a core focus on crowns, bridges, and dentures, he has given primary dental care at National Dental Centre and Tan Tock Seng Hospital Dental Clinic. </p>
+              <h3>Dr Azlin</h3>
+              <p>Dr Azlin graduated with a Bachelor of Dental Surgery from National University of Singapore. His four years of post-graduation employment in various public health institutes gave him substantial exposure and experience. </br> With a core focus on crowns, bridges, and dentures, he has given primary dental care at National Dental Centre and Tan Tock Seng Hospital Dental Clinic. </p>
             </div>
 
             <div class="box">
               <img src="assets/img/images/doctor3.png" alt="Doctor Carol">
-              <h3>Dr Carol</h3>
-              <p>Dr Carol is an orthodontic specialist registered with the Singapore Dental Council. She graduated from National University of Singapore with a Bachelor of Dental Surgery and a Master of Dental Surgery (Orthodontics). </br>She is skilled in treating a variety of complicated disorders, including early interceptive treatment for toddlers and treatment with clear aligners for adults.</p>
+              <h3>Dr Josephiney</h3>
+              <p>Dr Josephiney is an orthodontic specialist registered with the Singapore Dental Council. She graduated from National University of Singapore with a Bachelor of Dental Surgery and a Master of Dental Surgery (Orthodontics). </br>She is skilled in treating a variety of complicated disorders, including early interceptive treatment for toddlers and treatment with clear aligners for adults.</p>
             </div>
           </div>
         
@@ -256,7 +256,7 @@
                 <img src="assets/img/icons/geo-alt-fill.svg" alt="Location icon">
                 <div class="name"><strong>Address</strong></div>
                 <p>
-                  21 Beach Rd #01-123, S(588122)
+                  21 Lor 8 Toa Payoh, #01-200, S(310019)
                 </p>
               </div>
             </div>
@@ -266,7 +266,7 @@
                 <img src="assets/img/icons/telephone-fill.svg" alt="Phone icon">
                 <div class="name"><strong>PHONE</strong></div>
                 <p>
-                  +65 6555 4888
+                  +65 6622 4488</br></br>
                 </p>
               </div>
             </div>
@@ -276,7 +276,7 @@
                 <img src="assets/img/icons/envelope-fill.svg" alt="Email icon">
                 <div class="name"><strong>E-Mail</strong></div>
                 <p>
-                  denticare@localhost
+                  denticare@localhost.com</br></br>
                 </p>
               </div>
             </div>
@@ -296,7 +296,7 @@
         <div class="box">
           <h3>Quick Links</h3>
           <a href="index.php">Home</a>
-          <a href="html/about-us.html">About Us</a>
+          <a href="html/about-us.php">About Us</a>
           <a href="html/doctors.php">Doctors</a>
         </div>
         <div class="box">

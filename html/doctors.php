@@ -137,7 +137,7 @@ function selectDoctor()
                         </div>
                         <div class='content'>
                           <h3>" . $row['doctor_name'] . "</h3>
-                        <span>genral surgeon</span>
+                        <span>General Surgeon</span>
                         </div>
                       </div>
                       </a>";

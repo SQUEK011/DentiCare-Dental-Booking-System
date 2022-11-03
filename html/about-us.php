@@ -55,14 +55,14 @@
                 <img src="../assets/img/icons/envelope-solid.svg" width="14px"
                   height="14px">
               </div>
-              <a href="mailto:denticare@localhost" class="contact-link">denticare@localhost</a>
+              <a href="mailto:denticare@localhost.com" class="contact-link">denticare@localhost.com</a>
             </li>
             <li class="contact-item">
               <div class="icon-phone">
                 <img src="../assets/img/icons/phone-solid.svg" width="14px"
                   height="14px">
               </div>
-              <a href="tel:+917052101786" class="contact-link">+65 6555 4888</a>
+              <a href="tel:+6566224488" class="contact-link">+65 6622 4488</a>
             </li>
           </ul>
         </div>
@@ -126,19 +126,19 @@
       <div class="box-container">
         <div class="box" name="online-schedule">
           <img src="../assets/img/images/services-1.webp" alt="">
-          <h3>online schedule</h3>
+          <h3>General Dentistry</h3>
           <p>Quick and easy booking of dental appointments.</br>5 minutes is all you need to check our dentists'
             availability and book your desired timeslots!</p>
         </div>
         <div class="box" name="cosmetic-feeling">
           <img src="../assets/img/images/services-2.webp" alt="">
-          <h3>cosmetic filling</h3>
+          <h3>Aesthetic Dentistry</h3>
           <p>Improve your smile with cosmetic filling.</br> Cosmetic filling are less noticeable compared to traditional
             amalgam filling. and improve the appearance of your smile. </br>Your smile matters to us!</p>
         </div>
         <div class="box" name="oral-hygiene">
           <img src="../assets/img/images/services-3.webp" alt="">
-          <h3>oral hygiene experts</h3>
+          <h3>Extractions and Minor Surgery</h3>
           <p>For healthy teeth and gums, proper dental hygiene is essential.</br>We will provide scaling and polishing
             services.</br>Let our dentists take care of your dental needs!</p>
         </div>
