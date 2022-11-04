@@ -177,7 +177,7 @@ function bookAppointment()
         </div>
     </div>
     <!--Javascript files-->
-    <script src="../assets/js/scripts.js" defer></script>
+    <script src="../assets/js/forget-password.js" defer></script>
 </footer>
 <?php
 CloseCon($conn);

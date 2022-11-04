@@ -47,7 +47,7 @@ INSERT INTO `appointments` (`appt_no`, `appt_date`, `appt_time`, `doctor_name`, 
 (4, '2022-11-11', '10:00:00', 'Dr Andie Lao', 'Extractions and Minor Surgery', NULL),
 (5, '2022-11-11', '14:00:00', 'Dr Azlin Daur', 'General Dentistry', NULL),
 (6, '2022-11-11', '15:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
-(7, '2022-11-11', '16:00:00', 'Dr Andie Lao', 'General Dentistry', 'poketree'),
+(7, '2022-11-11', '16:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (8, '2022-11-11', '16:00:00', 'Dr. Josephiney Toy Chier Sia', 'General Dentistry', NULL),
 (9, '2022-11-12', '10:00:00', 'Dr Andie Lao', 'General Dentistry', NULL),
 (10, '2022-11-12', '14:00:00', 'Dr Andie Lao', 'Aesthetic Dentistry', NULL),
@@ -105,13 +105,10 @@ CREATE TABLE `user_accounts` (
 --
 
 INSERT INTO `user_accounts` (`user_name`, `pass_word`, `admin_rights`) VALUES
-('adsdasd', 'asdasdas', '0'),
-('amktree', 'passwordadmin', '1'),
 ('andieliao', 'andieliao', '1'),
 ('jtoy', 'jtoy', '1'),
 ('poketree', 'poketree', '0'),
-('queksa', 'G0d!s3v3ryth1ng', '0'),
-('tptree', 'passwordnoadmin', '0');
+('queksa', 'G0d!s3v3ryth1ng', '0');
 
 -- --------------------------------------------------------
 
@@ -142,9 +139,7 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`user_name`, `full_name`, `nric`, `D_O_B`, `gender`, `occupation`, `mobile_no`, `email`, `allergies`, `address_1`, `address_2`, `postal_code`, `emergency_contact_name`, `emergency_contact_no`, `emergency_contact_relation`) VALUES
-('poketree', 'Bum See', 'S1234567', '2022-10-25', 'Male', 'Doctor', '12345678', 'poketree@localhost.com', 'NIL', '1 tulang', 'NIL', '312456', 'Bum Say', '12345687', 'Mother'),
-('adsdasd', 'asdasdas', 'adadssda', '2022-11-03', 'Male', 'asdasdas', 'asdasdsa', 'asdasdads', 'asdasdads', 'adsasda', 'NIL', 'asdasd', 'asdadssad', 'asdasdas', 'adasdas'),
-('queksa', 'Sen A', 'S9746349', '2022-10-06', 'Male', 'Doctor', '+6562551', 'quek011@localhost.com', 'Nil', '1 Tua Ku Lang', 'NIL', '910031', 'Sen A', '+6562551', 'Mother');
+('poketree', 'Bum See', 'S1234567', '2022-10-25', 'Male', 'Doctor', '12345678', 'poketree@localhost.com', 'NIL', '1 tulang', 'NIL', '312456', 'Bum Say', '12345687', 'Mother');
 
 --
 -- Indexes for dumped tables

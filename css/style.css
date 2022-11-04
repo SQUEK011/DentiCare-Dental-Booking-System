@@ -30,13 +30,6 @@
       var(--carolina-blue) 0%,
       var(--royal-blue-light) 100%);
 
-  /**
-     * typography
-     */
-
-  /*--ff-roboto: "Roboto", sans-serif;
-    --ff-poppins: "Poppins", sans-serif;*/
-
   --fs-1: 4rem;
   --fs-2: 3.6rem;
   --fs-3: 3.2rem;
@@ -213,7 +206,6 @@ a {
 
 .logo {
   color: var(--oxford-blue-1);
-  /*font-family: var(--ff-poppins);*/
   font-size: 3.4rem;
   font-weight: var(--fw-800);
 }

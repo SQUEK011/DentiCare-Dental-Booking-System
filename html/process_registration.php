@@ -16,10 +16,12 @@
     $addressTwo = $_POST['getAddressTwo'];
     $postal = $_POST['getPostal'];
     $emergencyName = $_POST['getEmergencyName'];
-    $emergencyContact = $_POST['getEmergencyNumber'];
+    $emergencyContact = $_POST['getEsmergencyNumber'];
     $emergencyRelate = $_POST['getEmergencyRelation'];
     $password = $_POST['getPassword'];
 
+  $query = "SELECT EXISTS (SELECT * from user_profile where user_name = '$user' OR email='$email' OR full_name = '$fullname)";
+  if(mysqli_num_rows(mysqli_query($conn,$query)) < 1) {
     $sql = "INSERT INTO user_accounts(
       user_name,pass_word,admin_rights)
       VALUES ('$user','$password',0);";
@@ -45,4 +47,10 @@
       echo '<script type="text/javascript"> alert("Register Successful!");</script>';
       echo '<script type="text/javascript"> window.open("../index.php","_self");</script>';            //  On Successful Login redirects to home.php
     }
+  }else {
+    echo '<script type="text/javascript"> alert("User/Email already exists!");</script>';
+      echo '<script type="text/javascript"> window.open("registration.php","_self");</script>';   
+  }
+ 
+    
 ?>

@@ -139,10 +139,10 @@ function bookAppointment()
               <div class="input-field">
                 <label>Gender</label>
                 <select name="getGender" required>
-                  <option disabled selected>Select gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Others</option>
+                  <option value="" disabled selected>Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Others</option>
                 </select>
               </div>
 

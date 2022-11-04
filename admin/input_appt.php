@@ -52,7 +52,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="?logout">
             <img src="../assets/img/icons/right-from-bracket-solid-white.svg" width="16px" height="16px">
             <span class="links_name">Log out</span>
           </a>
@@ -89,22 +89,22 @@
                                 <th><input type="time" name="getTime" min="09:00" max="17:00" required></th>
                                 <th>
                                     <select name="getName" required>
-                                        <option disabled selected>Select service</option>
+                                        <option value="" disabled selected>Select service</option>
                                         <?php
                                             $sql = "SELECT doctor_name from doctors";
                                             $results = $conn->query($sql);
                                             while ($row = $results->fetch_assoc()){
-                                                echo "<option>".$row['doctor_name']."</option>";
+                                                echo "<option value='".$row['doctor_name']."'>".$row['doctor_name']."</option>";
                                             }
                                         ?>
                                     </select>
                                 </th>
                                 <th>
                                     <select name="getService" required>
-                                        <option disabled selected>Select service</option>
-                                        <option>General Dentistry</option>
-                                        <option>Aesthetic Dentistry</option>
-                                        <option>Extractions and Minor Surgery</option>
+                                        <option value="" disabled selected>Select service</option>
+                                        <option value="General Dentistry">General Dentistry</option>
+                                        <option value="Aesthetic Dentistry">Aesthetic Dentistry</option>
+                                        <option value="Extractions and Minor Surgery">Extractions and Minor Surgery</option>
                                     </select>
                                 </th>
                                 <th><input type="submit" name="submit-button"></th>

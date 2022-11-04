@@ -99,7 +99,7 @@ function selectDoctor()
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>
+              <a href="?isLogin=true" class="navbar-link" data-nav-link>
                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
               </a>
             </li>

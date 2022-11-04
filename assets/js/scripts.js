@@ -132,7 +132,7 @@ function checkDate(event){
 
 function checkNumber(event){
   var input = event.currentTarget;
-  var validRegex = /\[6|8|9]\d{7}/;
+  var validRegex = /[6|8|9]\d{7}/;
 
   if (input.value.match(validRegex)) {
     mobileNumber = true;
