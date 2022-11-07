@@ -20,9 +20,9 @@
     $emergencyRelate = $_POST['getEmergencyRelation'];
     $password = $_POST['getPassword'];
 
-  $query = "SELECT EXISTS (SELECT * from user_profile where user_name = '$user' OR email='$email' OR full_name = '$fullname' or nric='$nric')";
+  $query = "SELECT * from user_profile where user_name = '$user' OR email='$email' OR full_name = '$fullname' or nric='$nric'";
   if(mysqli_num_rows(mysqli_query($conn,$query)) < 1) {
-    $query = "SELECT EXISTS (SELECT * from user_profile where full_name = '$fullname' or nric='$nric')";
+    $query = "SELECT * from user_profile where full_name = '$fullname' or nric='$nric'";
     if(mysqli_num_rows(mysqli_query($conn,$query)) < 1){
       $sql = "INSERT INTO user_accounts(
         user_name,pass_word,admin_rights)
