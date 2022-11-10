@@ -44,7 +44,6 @@ addEventOnElem(navbarLinks, "click", closeNav);
  */
 
 const header = document.querySelector("[data-header]");
-//const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 window.addEventListener("scroll", function () {
   if (window.scrollY >= 100) {
