@@ -93,16 +93,16 @@ a {
 }
 
 .btn {
+  text-transform: uppercase;
   background-image: linear-gradient(var(--deg, 90deg),
       var(--carolina-blue) 0%,
       var(--royal-blue-light) 100%);
+      border-radius: var(--radius-4);
+  box-shadow: var(--shadow-4);
   color: var(--white);
   font-size: var(--fs-7);
-  text-transform: uppercase;
   padding: 20px 30px;
   text-align: center;
-  border-radius: var(--radius-4);
-  box-shadow: var(--shadow-4);
 }
 
 .btn:is(:hover, :focus) {
@@ -114,22 +114,22 @@ a {
 }
 
 .background {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .surround-container {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   max-width: 1200px;
-  width: 100%;
-  border-radius: 6px;
   padding: 30px;
+  border-radius: 6px;
   margin: auto;
   background-color: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .box-appointment{

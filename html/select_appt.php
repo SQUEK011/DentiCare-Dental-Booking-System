@@ -33,7 +33,6 @@ function bookAppointment()
     }
 }
 
-
 if ($_SESSION['fromEdit']) {
     $appt_no = $_SESSION['appt_no'];
     $sql = "SELECT * from appointments where appt_no = $appt_no";
@@ -51,8 +50,6 @@ if ($_SESSION['fromEdit']) {
     $serviceSelected = $_SESSION["service_selected"];
     $_SESSION['fromEdit'] = false;
 }
-
-
 ?>
 
 <head>
@@ -96,27 +93,21 @@ if ($_SESSION['fromEdit']) {
                 <a href="../index.php" class="logo">DentiCare</a>
                 <nav class="navbar container" data-navbar>
                     <ul class="navbar-list">
-
                         <li>
                             <a href="../index.php" class="navbar-link" data-nav-link>Home</a>
                         </li>
-
                         <li>
                             <a href="../html/about-us.php" class="navbar-link" data-nav-link>About Us</a>
                         </li>
-
                         <li>
                             <a href="../html/doctors.php" class="navbar-link" data-nav-link>Doctors</a>
                         </li>
-
                         <li>
                             <a href="select_appt.php?isLogin=true" class="navbar-link" data-nav-link>
                                 <img src="../assets/img/icons/circle-user-solid.svg" width="30px">
                             </a>
                         </li>
-
                     </ul>
-
                 </nav>
                 <a href="select_appt.php?isUser=true" class="btn">Book appointment</a>
                 <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
@@ -140,7 +131,7 @@ if ($_SESSION['fromEdit']) {
                             <th></th>
                         </tr>
                         <?php
-                        $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected' AND user_name is null";
+                        $sql = "SELECT appt_no, appt_date, appt_time from appointments where doctor_name='$doctorSelected' AND dental_service='$serviceSelected' AND user_name is null ORDER BY appt_date ASC";
                         $results = $conn->query($sql);
 
                         if (mysqli_num_rows($results) > 0) {
@@ -178,10 +169,8 @@ if ($_SESSION['fromEdit']) {
             </div>
         </div>
     </section>
-    <!-- -->
 </body>
 <footer class="footer">
-
     <div class="footer-top">
         <div class="container">
             <h1 class="text-center">DentiCare Dental Clinic</h1>
@@ -210,7 +199,6 @@ if ($_SESSION['fromEdit']) {
             </div>
         </div>
     </div>
-
     <div class="footer-bottom text-center">
         <div class="container">
             <p class="copyright">
