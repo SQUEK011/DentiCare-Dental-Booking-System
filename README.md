@@ -12,7 +12,7 @@
 
   <p align="center">
     An easier & efficient method for DentiCare Dental Clinic clients to have better looking teeth
-    <br />This is a sample website created for a IE4717 Final Assignment in Nanyang Technological University.
+    <br />This is a sample website created for a IE4717 Final Assignment in Nanyang Technological University.<br/>
     <a href="#readme-top"><strong>Click here to visit the website » (In Production)</strong></a>
     <br />
     <br />
