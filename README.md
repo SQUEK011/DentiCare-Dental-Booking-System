@@ -16,11 +16,6 @@
     <a href="#readme-top"><strong>Click here to visit the website » (In Production)</strong></a>
     <br />
     <br />
-    <a href="#readme-top">View Demo (In Production)</a>
-    ·
-    <a href="#readme-top">Report Bug (Not available)</a>
-    ·
-    <a href="#readme-top">Request Feature (Not available)</a>
   </p>
 </div>
  
